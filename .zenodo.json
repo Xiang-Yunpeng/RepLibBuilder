@@ -1,0 +1,23 @@
+{
+  "title": "RepLibBuilder: Automated construction, evaluation, and refinement of species-specific repeat libraries",
+  "description": "RepLibBuilder (RLB) is a two-step pipeline that rescues, standardizes, diagnoses, and condenses transposable element (TE) libraries. It merges public databases (Repbase, Dfam) with de novo predictions (HiTE, EDTA, RepeatModeler2) and applies a dual-engine diagnostic system (TEsorter protein-domain evidence combined with structural heuristics) to produce a high-fidelity, non-redundant library for genome masking and comparative analysis.",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "MIT",
+  "creators": [
+    {
+      "name": "Xiang, Yunpeng",
+      "orcid": "0009-0004-3877-7517",
+      "affiliation": "School of Life Science, Southwest University, Chongqing, China"
+    }
+  ],
+  "keywords": [
+    "bioinformatics",
+    "genomics",
+    "transposable elements",
+    "repeat library",
+    "repeat annotation",
+    "genome masking",
+    "TEsorter"
+  ]
+}

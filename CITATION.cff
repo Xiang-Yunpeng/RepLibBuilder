@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata from this file."
+title: "RepLibBuilder: Automated construction, evaluation, and refinement of species-specific repeat libraries"
+abstract: >-
+  RepLibBuilder (RLB) is a two-step pipeline that rescues, standardizes, diagnoses, and
+  condenses transposable element (TE) libraries. It merges public databases (Repbase, Dfam)
+  with de novo predictions (HiTE, EDTA, RepeatModeler2) and applies a dual-engine diagnostic
+  system (TEsorter protein-domain evidence combined with structural heuristics) to score
+  candidate sequences, repair misclassifications, and produce a high-fidelity, non-redundant
+  library for genome masking and comparative analysis.
+type: software
+authors:
+  - family-names: Xiang
+    given-names: Yunpeng
+    orcid: "https://orcid.org/0009-0004-3877-7517"
+    affiliation: "School of Life Science, Southwest University, Chongqing, China"
+version: 1.0.0
+date-released: "2026-07-21"
+license: MIT
+url: "https://github.com/Xiang-Yunpeng/RepLibBuilder"
+repository-code: "https://github.com/Xiang-Yunpeng/RepLibBuilder"
+doi: 10.5281/zenodo.21473020
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.21473020
+    description: Concept DOI (resolves to all versions)
+  - type: doi
+    value: 10.5281/zenodo.21473021
+    description: DOI for version 1.0.0
+keywords:
+  - bioinformatics
+  - genomics
+  - transposable elements
+  - repeat library
+  - repeat annotation
+  - genome masking
+  - TEsorter

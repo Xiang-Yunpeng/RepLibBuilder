@@ -2,6 +2,9 @@
 
 **Automated construction, evaluation, and refinement of species-specific repeat libraries.**
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21473020.svg)](https://doi.org/10.5281/zenodo.21473020)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 `v1.0.0`
 
 RepLibBuilder (RLB) is a two-step bioinformatics pipeline that rescues, standardizes,
@@ -415,10 +418,14 @@ utils/                      # shared helpers
 
 ## Citation
 
-If you use RepLibBuilder in your work, please cite:
+If you use RepLibBuilder in your work, please cite the archived software:
 
-> Peng, X. *et al.* RepLibBuilder: automated construction, evaluation, and refinement of
-> species-specific repeat libraries. *(Manuscript in preparation.)*
+> Peng, X. (2026). *Xiang-Yunpeng/RepLibBuilder: RepLibBuilder v1.0.0*. Zenodo. https://doi.org/10.5281/zenodo.21473020
+
+- **Cite all versions** (always resolves to the latest release): [`10.5281/zenodo.21473020`](https://doi.org/10.5281/zenodo.21473020)
+- **This specific version (v1.0.0)**: [`10.5281/zenodo.21473021`](https://doi.org/10.5281/zenodo.21473021)
+
+The accompanying manuscript is in preparation; this section will be updated with the paper citation upon publication.
 
 ---
 

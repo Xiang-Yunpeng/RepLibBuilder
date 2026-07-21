@@ -1,0 +1,26 @@
+#   <copyright header>
+<model1>
+MS    TaxId:1 TaxName:root
+CC    RepeatMasker Annotations:
+CC         Type: 
+CC         SubType: 
+CC         Species: root
+CC         SearchStages: 
+CC         BufferStages: 
+<model2>
+MS    TaxId:2 TaxName:Order
+MS    TaxId:3 TaxName:Other_Order
+CC    RepeatMasker Annotations:
+CC         Type: 
+CC         SubType: 
+CC         Species: Order, Other_Order
+CC         SearchStages: 
+CC         BufferStages: 
+<model3>
+MS    TaxId:3 TaxName:Other_Order
+CC    RepeatMasker Annotations:
+CC         Type: 
+CC         SubType: 
+CC         Species: Other_Order
+CC         SearchStages: 30,40
+CC         BufferStages: 

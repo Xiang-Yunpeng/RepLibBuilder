@@ -1,0 +1,21 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# ---- Editor / OS ----
+.vscode/
+.idea/
+.DS_Store
+*.swp
+
+# ---- Backups & scratch ----
+*.bak
+*.bak_*
+*.orig
+*~
+
+# ---- RepeatMasker / pipeline run outputs (should not be committed) ----
+*.cls.tsv
+*_tesorter.log

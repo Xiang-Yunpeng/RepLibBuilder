@@ -1,0 +1,30 @@
+Vendored third-party component: FamDB
+=====================================
+
+This directory is a bundled (vendored) copy of FamDB, the Dfam Consortium's
+tool for querying FamDB-format (.h5) transposable-element databases.
+
+    Upstream : https://github.com/Dfam-consortium/FamDB
+    Version  : 2.0.5
+    License  : CC0 1.0 Universal (public-domain dedication)
+               https://creativecommons.org/publicdomain/zero/1.0/
+    Authors  : Anthony Gray, Jeb Rosen, and the Dfam consortium
+
+FamDB is released into the public domain under CC0; it is redistributed here
+under those terms. See famdb.py and README.md for the original notices.
+
+How RepLibBuilder uses it
+-------------------------
+RepLibBuilder calls `famdb.py ... families -f embl` to extract curated Dfam
+families for a given NCBI taxon from a user-supplied, pre-built Dfam .h5
+database (see ../rating_module/dfam_fetcher.py).
+
+Trimmed for distribution
+------------------------
+The following were removed because they are NOT needed for the query/`families`
+path RepLibBuilder uses (they are inputs only for *building* a FamDB file):
+
+    - RepeatPeps.lib   (~18 MB RepeatMasker peptide library)
+    - the upstream .git history
+
+Everything required to query a pre-built Dfam .h5 is retained and unmodified.

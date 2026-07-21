@@ -1,0 +1,8 @@
+>TEST0001.1 name=Test family TEST0001 @root
+ACGT
+>TEST0001.1 (anti) name=Test family TEST0001 @root
+ACGT
+>TEST0004.1 name=Test family TEST0004 @Genus [S:35]
+CCCCTTTT
+>TEST0004.1 (anti) name=Test family TEST0004 @Genus [S:35]
+AAAAGGGG

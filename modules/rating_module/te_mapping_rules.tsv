@@ -1,0 +1,1463 @@
+#Software	Original_ID_Pattern	Target_Class	Target_Superfamily	Notes
+# ==============================================================================
+# RepLibBuilder TE Mapping Rules
+# ==============================================================================
+# 1. SOFTWARE-SPECIFIC RULES (Highest Priority)
+# ==============================================================================
+# EDTA: DT* encoding -> Dfam canonical superfamilies
+EDTA	(?i)^DNA/DTA$	DNA	hAT	EDTA_DTA_to_hAT
+EDTA	(?i)^MITE/DTA$	DNA	hAT	EDTA_MITE_DTA_to_hAT
+EDTA	(?i)^DNA/DTC$	DNA	CMC	EDTA_DTC_to_CMC_parent
+EDTA	(?i)^MITE/DTC$	DNA	CMC	EDTA_MITE_DTC_to_CMC_parent
+EDTA	(?i)^DNA/DTH$	DNA	PIF-Harbinger	EDTA_DTH_to_Harbinger
+EDTA	(?i)^MITE/DTH$	DNA	PIF-Harbinger	EDTA_MITE_DTH_to_Harbinger
+EDTA	(?i)^DNA/DTM$	DNA	MULE	EDTA_DTM_to_MULE_parent
+EDTA	(?i)^MITE/DTM$	DNA	MULE	EDTA_MITE_DTM_to_MULE_parent
+EDTA	(?i)^DNA/DTT$	DNA	TcMar	EDTA_DTT_to_TcMar
+EDTA	(?i)^MITE/DTT$	DNA	TcMar	EDTA_MITE_DTT_to_TcMar
+EDTA	(?i)^DNA/Helitron$	RC	Helitron	EDTA_DNA_Helitron_to_RC
+EDTA	(?i)^LTR/unknown$	LTR	Unknown	EDTA_LTR_unknown
+EDTA	(?i)^SINE\?$	SINE	Unknown	EDTA_SINE_question_mark
+EDTA	(?i)^unknown$	Unknown	Unknown	EDTA_Unknown_catch
+
+# RM2: canonical subfamilies passed through unchanged (no rollups in v5)
+RM2	(?i)^SINE\?$	SINE	Unknown	RM2_SINE_question_mark
+RM2	(?i)^Unknown$	Unknown	Unknown	RM2_Unknown_catch
+
+# HiTE: RC/Helitron and DNA/CMC-EnSpm are canonical; DNA/MULE rolled up to
+# canonical DNA/MULE-MuDR.
+HiTE	(?i)^RC/Helitron$	RC	Helitron	HiTE_RC_Helitron_canonical
+HiTE	(?i)^DNA/Helitron$	RC	Helitron	HiTE_DNA_Helitron_to_RC
+HiTE	(?i)^DNA/MULE$	DNA	MULE	HiTE_MULE_to_MULE_parent
+HiTE	(?i)^LTR/other$	LTR	Unknown	HiTE_LTR_other
+HiTE	(?i)^DNA/other$	DNA	Unknown	HiTE_DNA_other
+HiTE	(?i)^SINE\?$	SINE	Unknown	HiTE_SINE_question_mark
+HiTE	(?i)^Unknown$	Unknown	Unknown	HiTE_Unknown_catch
+# --- HiTE Wicker-mode (--is_wicker 1) bare superfamily labels ---
+HiTE	(?i)^Tc1-Mariner$	DNA	TcMar	HiTE_wicker_Tc1Mariner
+HiTE	(?i)^hAT$	DNA	hAT	HiTE_wicker_hAT
+HiTE	(?i)^Mutator$	DNA	MULE	HiTE_wicker_Mutator
+HiTE	(?i)^Merlin$	DNA	Merlin	HiTE_wicker_Merlin
+HiTE	(?i)^Transib$	DNA	CMC-Transib	HiTE_wicker_Transib
+HiTE	(?i)^P$	DNA	P	HiTE_wicker_P
+HiTE	(?i)^PiggyBac$	DNA	PiggyBac	HiTE_wicker_PiggyBac
+HiTE	(?i)^PIF-Harbinger$	DNA	PIF-Harbinger	HiTE_wicker_PIF_Harbinger
+HiTE	(?i)^CACTA$	DNA	CMC	HiTE_wicker_CACTA
+HiTE	(?i)^Crypton$	DNA	Crypton	HiTE_wicker_Crypton
+HiTE	(?i)^Helitron$	RC	Helitron	HiTE_wicker_Helitron
+HiTE	(?i)^Maverick$	DNA	Maverick	HiTE_wicker_Maverick
+HiTE	(?i)^Copia$	LTR	Copia	HiTE_wicker_Copia
+HiTE	(?i)^Gypsy$	LTR	Gypsy	HiTE_wicker_Gypsy
+HiTE	(?i)^Bel-Pao$	LTR	Pao	HiTE_wicker_BelPao
+HiTE	(?i)^Retrovirus$	LTR	ERV	HiTE_wicker_Retrovirus
+HiTE	(?i)^DIRS$	LTR	DIRS	HiTE_wicker_DIRS
+HiTE	(?i)^Ngaro$	LTR	Ngaro	HiTE_wicker_Ngaro
+HiTE	(?i)^VIPER$	LTR	Viper	HiTE_wicker_VIPER
+HiTE	(?i)^Penelope$	PLE	Unknown	HiTE_wicker_Penelope
+HiTE	(?i)^R2$	LINE	R2	HiTE_wicker_R2
+HiTE	(?i)^RTE$	LINE	RTE	HiTE_wicker_RTE
+HiTE	(?i)^Jockey$	LINE	I-Jockey	HiTE_wicker_Jockey
+HiTE	(?i)^L1$	LINE	L1	HiTE_wicker_L1
+HiTE	(?i)^I$	LINE	I	HiTE_wicker_I
+HiTE	(?i)^tRNA$	SINE	tRNA	HiTE_wicker_tRNA
+HiTE	(?i)^7SL$	SINE	7SL	HiTE_wicker_7SL
+HiTE	(?i)^5S$	SINE	5S	HiTE_wicker_5S
+
+# TEsorter: TIR/X -> canonical DNA/X
+TEsorter	(?i)^TIR/PIF_Harbinger	DNA	PIF-Harbinger	TEsorter_TIR_to_DNA
+TEsorter	(?i)^TIR/EnSpm_CACTA	DNA	CMC	TEsorter_EnSpm_CACTA_to_CMC_parent
+TEsorter	(?i)^TIR/hAT	DNA	hAT	TEsorter_TIR_to_DNA
+TEsorter	(?i)^TIR/MuDR_Mutator$	DNA	MULE	TEsorter_MuDR_Mutator_to_MULE_parent
+TEsorter	(?i)^TIR/Tc1_[Mm]ariner$	DNA	TcMar	TEsorter_Tc1_Mariner_to_TcMar_parent
+TEsorter	(?i)^TIR/PiggyBac	DNA	PiggyBac	TEsorter_TIR_to_DNA
+TEsorter	(?i)^TIR/Ginger	DNA	Ginger	TEsorter_TIR_to_DNA
+# v5.3.3: Complete TEsorter mapping coverage (all 261 TEsorter labels)
+# Generic TIR superfamilies -> Dfam parent / Dfam canonical
+TEsorter	(?i)^TIR/MULE$	DNA	MULE	TEsorter_MULE_to_MULE_parent
+TEsorter	(?i)^TIR/CMC$	DNA	CMC	TEsorter_CMC_to_CMC_parent
+TEsorter	(?i)^TIR/Kolobok$	DNA	Kolobok	TEsorter_Kolobok_to_Kolobok_parent
+TEsorter	(?i)^TIR/Merlin$	DNA	Merlin	TEsorter_Merlin_to_DNA_Merlin
+TEsorter	(?i)^TIR/Novosib$	DNA	Novosib	TEsorter_Novosib_to_DNA_Novosib
+TEsorter	(?i)^TIR/P$	DNA	P	TEsorter_P_to_DNA_P
+TEsorter	(?i)^TIR/Zator$	DNA	Zator	TEsorter_Zator_to_DNA_Zator
+TEsorter	(?i)^TIR/Transib$	DNA	CMC-Transib	TEsorter_Transib_to_CMC_Transib
+# Sola: TEsorter uses Sola1/2/3 (no dash); Dfam uses Sola-1/-2/-3 (with dash)
+TEsorter	(?i)^TIR/Sola1$	DNA	Sola-1	TEsorter_Sola1_to_Sola_1
+TEsorter	(?i)^TIR/Sola2$	DNA	Sola-2	TEsorter_Sola2_to_Sola_2
+TEsorter	(?i)^TIR/Sola3$	DNA	Sola-3	TEsorter_Sola3_to_Sola_3
+# v5.3.5: Academ has no Dfam parent canonical (Dfam only defines Academ-1/-2/-H).
+# Returning DNA/Academ would emit a label RepeatMasker .tbl cannot recognise,
+# so we collapse to DNA/Unknown (matches the Repbase ^Academ.* -> DNA/Unknown
+# policy and avoids non-canonical leakage).
+TEsorter	(?i)^TIR/Academ$	DNA	Unknown	TEsorter_Academ_to_DNA_bare
+# TEsorter non-DNA Orders that aren't Dfam Classes
+TEsorter	(?i)^Helitron/unknown$	RC	Helitron	TEsorter_Helitron_to_RC
+TEsorter	(?i)^pararetrovirus/unknown$	LTR	Caulimovirus	TEsorter_pararetrovirus_to_Caulimovirus
+# TEsorter LINE: subfamily refinements and rollups to Dfam canonical
+TEsorter	(?i)^LINE/RTEX$	LINE	RTE-X	TEsorter_LINE_RTEX_to_RTE_X
+TEsorter	(?i)^LINE/RTETP$	LINE	RTE-BovB	TEsorter_LINE_RTETP_to_RTE_BovB
+TEsorter	(?i)^LINE/Rex1$	LINE	Rex-Babar	TEsorter_LINE_Rex1_to_Rex_Babar
+TEsorter	(?i)^LINE/L2A$	LINE	L2	TEsorter_LINE_L2A_to_L2_parent
+TEsorter	(?i)^LINE/L2B$	LINE	L2	TEsorter_LINE_L2B_to_L2_parent
+# TEsorter LINE obscure clades (not in Dfam) -> LINE/Unknown
+# (consistent with v5.2 Repbase strategy for the same clade names)
+TEsorter	(?i)^LINE/Crack$	LINE	Unknown	TEsorter_LINE_Crack_to_bare
+TEsorter	(?i)^LINE/Daphne$	LINE	Unknown	TEsorter_LINE_Daphne_to_bare
+TEsorter	(?i)^LINE/Hero$	LINE	Unknown	TEsorter_LINE_Hero_to_bare
+TEsorter	(?i)^LINE/Ingi$	LINE	Unknown	TEsorter_LINE_Ingi_to_bare
+TEsorter	(?i)^LINE/Nimb$	LINE	Unknown	TEsorter_LINE_Nimb_to_bare
+TEsorter	(?i)^LINE/Outcast$	LINE	Unknown	TEsorter_LINE_Outcast_to_bare
+TEsorter	(?i)^LINE/RandI$	LINE	Unknown	TEsorter_LINE_RandI_to_bare
+TEsorter	(?i)^LTR/mixture	LTR	Unknown	TEsorter_mixture_to_Unknown
+# v5.3.5: TEsorter 'sine' database emits SINE/<family-name> for 88 distinct
+# family names (AtSB2, BoSB10A, p-SINE1_OS, SINE2-*_OS, ...). None of these
+# family names are Dfam canonical Subtypes, so passing them through verbatim
+# produces SINE/X labels that RepeatMasker .tbl treats as Unclassified.
+# Roll up to SINE/Unknown (analogous to the TEsorter rare-LINE rollups
+# above). Loses TEsorter SINE family-name resolution but keeps the label
+# Dfam-canonical and avoids 88 cross-source asymmetries.
+TEsorter	(?i)^SINE/.*$	SINE	Unknown	TEsorter_SINE_family_to_bare
+TEsorter	(?i)^mixture/mixture	Unknown	Unknown	TEsorter_mixture_to_Unknown
+
+# ==============================================================================
+# 5. PUBLIC DB RULES (Repbase & Dfam) - MUST BE ABOVE GLOBAL CATCH-ALLS
+# ==============================================================================
+#
+# ------------------------------------------------------------------------------
+# REPBASE RULES (v5 - Dfam canonical alignment)
+# ------------------------------------------------------------------------------
+# Organized by canonical Class. Targets selected from Dfam TEClasses.tsv
+# columns repeatmasker_type + repeatmasker_subtype.
+#
+# Repbase entries that have no Dfam canonical Subtype (long-tail names from
+# old Repbase: Crack, Kiri, NeSL, Nimb, Outcast, Vingi, Ingi, Daphne, Hydra
+# as LINE, Rehavkus, Neptune as LTR, etc.) are mapped to BARE Class form
+# (e.g. LINE/Unknown). This is intentional: RepeatMasker treats LINE/Unknown
+# as a valid "LINE" classification in the .tbl, while a fabricated subtype
+# like "LINE/Crack" would be counted as Unclassified.
+#
+# v5 specifically removes the DROP block (gene fragments and mis-entries
+# like gag, transposase, reverse transcriptase, Pseudogene, etc.); those
+# now fall through to the Repbase local catch-all (Unknown/Unknown) and
+# are retained as Unknown/Unverified (the length-based Suspected_FP review
+# was removed after 5-species data refuted the >4kb-no-domain heuristic).
+# ------------------------------------------------------------------------------
+
+# ----- LTR Retrotransposons (Class I) -----
+# Gypsy / Copia: canonical bare forms
+Repbase	(?i)^Gypsy.*	LTR	Gypsy	Repbase_Gypsy_main
+Repbase	(?i)^GYPSY[ _-].*	LTR	Gypsy	Repbase_Gypsy_variant
+Repbase	(?i)^Copia.*	LTR	Copia	Repbase_Copia_main
+Repbase	(?i)^SIRE.*	LTR	Copia	Repbase_SIRE_to_Copia
+# Bel-Pao -> LTR/Pao (canonical)
+Repbase	(?i)^BEL.*	LTR	Pao	Repbase_BEL_to_Pao
+# DIRS group: canonical LTR/DIRS and LTR/Ngaro
+Repbase	(?i)^DIRS.*	LTR	DIRS	Repbase_DIRS
+Repbase	(?i)^Naiad.*	PLE	Naiad	Repbase_Naiad_to_PLE
+Repbase	(?i)^Chlamys.*	PLE	Chlamys	Repbase_Chlamys_to_PLE
+Repbase	(?i)^Coprina.*	PLE	Coprina	Repbase_Coprina_to_PLE
+# ERV family - canonical subtypes preserved
+Repbase	(?i)^ERV1.*	LTR	ERV1	Repbase_ERV1
+Repbase	(?i)^ERV2.*	LTR	ERVK	Repbase_ERV2_to_ERVK
+Repbase	(?i)^ERV3.*	LTR	ERVL	Repbase_ERV3_to_ERVL
+Repbase	(?i)^ERV4.*	LTR	ERV4	Repbase_ERV4
+Repbase	(?i)^ERVK.*	LTR	ERVK	Repbase_ERVK
+Repbase	(?i)^ERVL.*	LTR	ERVL	Repbase_ERVL
+Repbase	(?i)^ERV[5-9].*	LTR	ERV	Repbase_ERV_other_numbered
+Repbase	(?i)^Endogenous Retrovirus.*	LTR	ERV	Repbase_ERV_full
+Repbase	(?i)^endogenous retrovirus.*	LTR	ERV	Repbase_ERV_lower
+Repbase	(?i)^Lentivirus.*	LTR	ERV-Lenti	Repbase_Lenti_to_ERV_Lenti
+Repbase	(?i)^Lokiretrovirus.*	LTR	ERV	Repbase_Loki_to_ERV
+Repbase	(?i)^Loki.*	LTR	Gypsy	Repbase_Loki_family_to_Gypsy
+Repbase	(?i)^Caulimoviridae.*	LTR	Caulimovirus	Repbase_Caulimo
+Repbase	(?i)^MaLR.*	LTR	ERVL-MaLR	Repbase_MaLR_to_ERVL_MaLR
+Repbase	(?i)^Hero.*	LTR	Gypsy	Repbase_Hero_to_Gypsy
+# v5.3.3: Disambiguate Neptune-LTR (LTR/Gypsy) vs Neptune (PLE/Neptune)
+Repbase	(?i)^Neptune-LTR.*	LTR	Gypsy	Repbase_Neptune_LTR_to_Gypsy
+Repbase	(?i)^Neptune.*	PLE	Neptune	Repbase_Neptune_default_to_PLE_Neptune
+Repbase	(?i)^Rehavkus.*	LTR	Gypsy	Repbase_Rehavkus_to_Gypsy
+Repbase	(?i)^VADER.*	LTR	Unknown	Repbase_VADER
+Repbase	(?i)^Cassandra.*	LTR	Cassandra	Repbase_Cassandra
+Repbase	(?i)^LTR Retrotransposon.*	LTR	Unknown	Repbase_LTR_generic
+Repbase	(?i)^LTR retrotransposon.*	LTR	Unknown	Repbase_LTR_generic_lower
+Repbase	(?i)^LTR-retrotransposon.*	LTR	Unknown	Repbase_LTR_generic_dash
+Repbase	(?i)^LTR$	LTR	Unknown	Repbase_LTR_bare
+Repbase	(?i)^Long terminal repeat.*	LTR	Unknown	Repbase_LongTermRepeat
+
+# ----- LINE / Non-LTR Retrotransposons -----
+# L1 group: canonical subtypes preserved
+Repbase	(?i)^L1.*	LINE	L1	Repbase_L1_main
+Repbase	(?i)^LINE1.*	LINE	L1	Repbase_LINE1
+Repbase	(?i)^HAL1.*	LINE	L1	Repbase_HAL1_to_L1
+Repbase	(?i)^Tx1.*	LINE	L1-Tx1	Repbase_Tx1_to_L1_Tx1
+# L2 -> canonical LINE/L2
+Repbase	(?i)^L2[A-Z]?$	LINE	L2	Repbase_L2_main
+Repbase	(?i)^L2.*	LINE	L2	Repbase_L2_variant
+# CR1 group
+Repbase	(?i)^CR1.*	LINE	CR1	Repbase_CR1
+# Jockey / I / Loa - canonical mappings
+Repbase	(?i)^Jockey.*	LINE	I-Jockey	Repbase_Jockey_to_I_Jockey
+# v5.3.5: rare Repbase 'I-Jockey-1_DR' / 'I-Jockey_OS' style names
+Repbase	(?i)^I-Jockey.*	LINE	I-Jockey	Repbase_I_Jockey_dash_prefix
+Repbase	(?i)^Loa.*	LINE	R1-LOA	Repbase_Loa_to_R1_LOA
+Repbase	(?i)^R1.*	LINE	R1	Repbase_R1
+# R2 group
+Repbase	(?i)^R2.*	LINE	R2	Repbase_R2
+# R4 -> canonical Dong-R4
+Repbase	(?i)^R4.*	LINE	Dong-R4	Repbase_R4_to_Dong_R4
+# Rex -> canonical Rex-Babar
+Repbase	(?i)^Rex[0-9].*	LINE	Rex-Babar	Repbase_Rex_to_Rex_Babar
+# RTE group - canonical preserves RTE-RTE / RTE-X / RTE-BovB
+Repbase	(?i)^RTEX.*	LINE	RTE-X	Repbase_RTEX
+Repbase	(?i)^RTETP.*	LINE	RTE-BovB	Repbase_RTETP
+Repbase	(?i)^RTE.*	LINE	RTE	Repbase_RTE_to_parent_RTE_clade
+# Tad1 - canonical
+Repbase	(?i)^Tad1.*	LINE	Tad1	Repbase_Tad1
+# CRE group
+Repbase	(?i)^CRE.*	LINE	CRE	Repbase_CRE
+# Proto - canonical Proto1/Proto2 preserved if numbered
+Repbase	(?i)^Proto1.*	LINE	Proto1	Repbase_Proto1
+Repbase	(?i)^Proto2.*	LINE	Proto2	Repbase_Proto2
+# I element (strict match)
+Repbase	(?-i:^I$)	LINE	I	Repbase_I_element_strict
+Repbase	(?-i:^I_).*	LINE	I	Repbase_I_element_prefix
+# Repbase long-tail LINE names with no canonical subtype -> bare Class
+Repbase	(?i)^Crack.*	LINE	Unknown	Repbase_Crack_to_bare_LINE
+Repbase	(?i)^Vingi.*	LINE	Unknown	Repbase_Vingi_to_bare_LINE
+Repbase	(?i)^Nimb.*	LINE	Unknown	Repbase_Nimb_to_bare_LINE
+Repbase	(?i)^NeSL.*	LINE	R2-NeSL	Repbase_NeSL_to_R2_NeSL
+Repbase	(?i)^Outcast.*	LINE	Unknown	Repbase_Outcast_to_bare_LINE
+Repbase	(?i)^Ingi.*	LINE	Unknown	Repbase_Ingi_to_bare_LINE
+Repbase	(?i)^Kiri.*	LINE	Unknown	Repbase_Kiri_to_bare_LINE
+# v5.3.3: Disambiguate Dada-LINE (LINE/Unknown) vs Dada (DNA/Dada)
+Repbase	(?i)^Dada-LINE.*	LINE	Unknown	Repbase_Dada_LINE_to_bare_LINE
+Repbase	(?i)^Dada.*	DNA	Dada	Repbase_Dada_to_DNA_Dada
+Repbase	(?i)^Daphne.*	LINE	Unknown	Repbase_Daphne_to_bare_LINE
+Repbase	(?i)^RandI.*	LINE	Unknown	Repbase_RandI_to_bare_LINE
+Repbase	(?i)^Ambal.*	LINE	CRE-Ambal	Repbase_Ambal_to_CRE_Ambal
+Repbase	(?i)^Nematis.*	PLE	Nematis	Repbase_Nematis_to_PLE
+Repbase	(?i)^Lodin.*	LINE	Unknown	Repbase_Lodin_to_bare_LINE
+Repbase	(?i)^Hydra.*	PLE	Hydra	Repbase_Hydra_to_PLE
+Repbase	(?i)^retroposon.*	Retroposon	Unknown	Repbase_retroposon_to_Retroposon
+Repbase	(?i)^Non-LTR Retrotransposon.*	LINE	Unknown	Repbase_NonLTR_generic
+Repbase	(?i)^Non-LTR retrotransposon.*	LINE	Unknown	Repbase_NonLTR_generic_lower
+Repbase	(?i)^LINE$	LINE	Unknown	Repbase_LINE_bare
+
+# ----- Penelope-like Elements (PLE) - top-level Class -----
+Repbase	(?i)^Penelope/Poseidon.*	PLE	Poseidon	Repbase_Penelope_Poseidon
+Repbase	(?i)^Penelope.*	PLE	Unknown	Repbase_Penelope_to_PLE_bare
+Repbase	(?i)^Poseidon.*	PLE	Poseidon	Repbase_Poseidon_to_PLE
+Repbase	(?i)^Athena.*	PLE	Athena	Repbase_Athena_to_PLE
+
+# ----- SINE -----
+# Canonical SINE/<subtype> preserved; only translate Repbase code names.
+Repbase	(?i)^SINE2/tRNA.*	SINE	tRNA	Repbase_SINE2_tRNA
+Repbase	(?i)^SINE1/7SL.*	SINE	7SL	Repbase_SINE1_7SL
+Repbase	(?i)^SINE3/5S.*	SINE	5S	Repbase_SINE3_5S
+# RM-style SINE/<subtype> (already-canonical inputs): hard-coded, exact-anchored
+# so they are NOT swallowed by the generic ^SINE.* catch-all below. Targets match
+# Global + the SINE1/2/3 rules above (same TE -> same mapping across sources).
+Repbase	(?i)^SINE/tRNA$	SINE	tRNA	Repbase_SINE_tRNA_RMstyle
+Repbase	(?i)^SINE/7SL$	SINE	7SL	Repbase_SINE_7SL_RMstyle
+Repbase	(?i)^SINE/5S$	SINE	5S	Repbase_SINE_5S_RMstyle
+Repbase	(?i)^SINEU/snRNA.*	snRNA	Unknown	Repbase_SINEU_to_snRNA
+Repbase	(?i)^SINE_HE1.*	SINE	Unknown	Repbase_SINE_HE1
+Repbase	(?i)^SINE.*	SINE	Unknown	Repbase_SINE_generic
+Repbase	(?i)^short interspersed element.*	SINE	Unknown	Repbase_SINE_long_form
+
+# ----- DNA Transposons (Class II) -----
+Repbase	(?i)^hAT.*	DNA	hAT	Repbase_hAT_main
+Repbase	(?i)^HAT[ _-].*	DNA	hAT	Repbase_HAT_variant
+Repbase	(?i)^Charlie.*	DNA	hAT-Charlie	Repbase_Charlie_to_hAT_Charlie
+Repbase	(?i)^Mariner/Tc1.*	DNA	TcMar-Mariner	Repbase_Mariner_Tc1_to_TcMar_Mariner
+Repbase	(?i)^mariner/Tc1.*	DNA	TcMar-Mariner	Repbase_mariner_Tc1_lower
+Repbase	(?i)^Mariner.*	DNA	TcMar-Mariner	Repbase_Mariner_to_TcMar_Mariner
+Repbase	(?i)^Tc1.*	DNA	TcMar-Tc1	Repbase_Tc1_to_TcMar_Tc1
+Repbase	(?i)^Tc2.*	DNA	TcMar-Tc2	Repbase_Tc2_to_TcMar_Tc2
+Repbase	(?i)^Tigger.*	DNA	TcMar-Tigger	Repbase_Tigger_to_TcMar_Tigger
+Repbase	(?i)^Stowaway.*	DNA	TcMar-Stowaway	Repbase_Stowaway_to_TcMar_Stowaway
+Repbase	(?i)^Pogo.*	DNA	TcMar-Pogo	Repbase_Pogo_to_TcMar_Pogo
+Repbase	(?i)^Fot1.*	DNA	TcMar-Fot1	Repbase_Fot1_to_TcMar_Fot1
+Repbase	(?i)^EnSpm/CACTA.*	DNA	CMC	Repbase_EnSpm_CACTA_to_CMC_parent
+Repbase	(?i)^EnSpm.*	DNA	CMC	Repbase_EnSpm_to_CMC_parent
+Repbase	(?i)^CACTA.*	DNA	CMC	Repbase_CACTA_to_CMC_parent
+# v5.3.4: MULE-* canonical children (Dfam: MULE-MuDR, MULE-NOF, MULE-F, MULE-Ricksha).
+# Order matters - specific MULE-X children must precede the bare ^MULE.* parent
+# catchall. Repbase's 'Mutator-*' naming convention maps to the MuDR lineage.
+Repbase	(?i)^MULE-MuDR.*	DNA	MULE-MuDR	Repbase_MULE_MuDR_explicit_child
+Repbase	(?i)^MULE-NOF.*	DNA	MULE-NOF	Repbase_MULE_NOF_child
+Repbase	(?i)^MULE-F.*	DNA	MULE-F	Repbase_MULE_F_child
+Repbase	(?i)^MULE-Ricksha.*	DNA	MULE-Ricksha	Repbase_MULE_Ricksha_child
+Repbase	(?i)^Mutator.*	DNA	MULE	Repbase_Mutator_to_MULE_parent
+Repbase	(?i)^MULE.*	DNA	MULE	Repbase_MULE_bare_to_parent
+Repbase	(?i)^MuDR.*	DNA	MULE	Repbase_MuDR_to_MULE_parent
+Repbase	(?i)^Harbinger.*	DNA	PIF-Harbinger	Repbase_Harbinger
+Repbase	(?i)^piggyBac.*	DNA	PiggyBac	Repbase_piggyBac
+# Helitron -> RC (canonical)
+Repbase	(?i)^Helitron.*	RC	Helitron	Repbase_Helitron_to_RC
+Repbase	(?i)^HELITRON.*	RC	Helitron	Repbase_HELITRON_upper_to_RC
+Repbase	(?i)^Helentron.*	RC	Helentron	Repbase_Helentron
+# Maverick / Polinton -> DNA/Maverick
+Repbase	(?i)^Polinton.*	DNA	Maverick	Repbase_Polinton_to_Maverick
+Repbase	(?i)^Maverick.*	DNA	Maverick	Repbase_Maverick
+# Kolobok - canonical subfamilies preserved (no rollup)
+Repbase	(?i)^Kolobok-Hydra.*	DNA	Kolobok-Hydra	Repbase_Kolobok_Hydra
+Repbase	(?i)^Kolobok-E.*	DNA	Kolobok-E	Repbase_Kolobok_E
+Repbase	(?i)^Kolobok-T2.*	DNA	Kolobok-T2	Repbase_Kolobok_T2
+Repbase	(?i)^Kolobok.*	DNA	Kolobok	Repbase_Kolobok_generic
+# Academ - canonical Academ-1/-2/-H preserved
+Repbase	(?i)^Academ-1.*	DNA	Academ-1	Repbase_Academ_1
+Repbase	(?i)^Academ-2.*	DNA	Academ-2	Repbase_Academ_2
+Repbase	(?i)^Academ-H.*	DNA	Academ-H	Repbase_Academ_H
+Repbase	(?i)^Academ.*	DNA	Unknown	Repbase_Academ_bare
+# Crypton - canonical subfamilies preserved
+Repbase	(?i)^Crypton-A.*	DNA	Crypton-A	Repbase_Crypton_A
+Repbase	(?i)^Crypton-C.*	DNA	Crypton-C	Repbase_Crypton_C
+Repbase	(?i)^Crypton-F.*	DNA	Crypton-F	Repbase_Crypton_F
+Repbase	(?i)^Crypton-H.*	DNA	Crypton-H	Repbase_Crypton_H
+Repbase	(?i)^Crypton-I.*	DNA	Crypton-I	Repbase_Crypton_I
+Repbase	(?i)^Crypton-R.*	DNA	Crypton-R	Repbase_Crypton_R
+Repbase	(?i)^Crypton-S.*	DNA	Crypton-S	Repbase_Crypton_S
+Repbase	(?i)^Crypton-V.*	DNA	Crypton-V	Repbase_Crypton_V
+Repbase	(?i)^Crypton-X.*	DNA	Crypton-X	Repbase_Crypton_X
+Repbase	(?i)^Crypton.*	DNA	Crypton	Repbase_Crypton_generic
+# Sola - canonical Sola-1/-2/-3 preserved
+Repbase	(?i)^Sola-?1.*	DNA	Sola-1	Repbase_Sola_1
+Repbase	(?i)^Sola-?2.*	DNA	Sola-2	Repbase_Sola_2
+Repbase	(?i)^Sola-?3.*	DNA	Sola-3	Repbase_Sola_3
+Repbase	(?i)^Sola.*	DNA	Unknown	Repbase_Sola_bare
+# Transib -> canonical CMC-Transib
+Repbase	(?i)^Transib.*	DNA	CMC-Transib	Repbase_Transib_to_CMC_Transib
+# Merlin
+Repbase	(?i)^Merlin.*	DNA	Merlin	Repbase_Merlin
+# P-element
+Repbase	(?-i:^P$)	DNA	P	Repbase_P_element_strict
+Repbase	(?i)^P-element.*	DNA	P	Repbase_P_element_long
+# Ginger - canonical Ginger-1/-2 preserved
+Repbase	(?i)^Ginger-?1.*	DNA	Ginger-1	Repbase_Ginger_1
+Repbase	(?i)^Ginger-?2.*	DNA	Ginger-2	Repbase_Ginger_2
+Repbase	(?i)^Ginger.*	DNA	Ginger	Repbase_Ginger_bare
+Repbase	(?i)^TDD.*	DNA	Ginger	Repbase_TDD_to_Ginger
+# Zator / Zisupton / Novosib / Chapaev
+Repbase	(?i)^Zator.*	DNA	Zator	Repbase_Zator
+Repbase	(?i)^Zisupton.*	DNA	Zisupton	Repbase_Zisupton
+Repbase	(?i)^Novosib.*	DNA	Novosib	Repbase_Novosib
+Repbase	(?i)^Chapaev-3.*	DNA	CMC-Chapaev-3	Repbase_Chapaev_3
+Repbase	(?i)^Chapaev.*	DNA	CMC-Chapaev	Repbase_Chapaev
+Repbase	(?i)^Mirage.*	DNA	CMC-Mirage	Repbase_Mirage_to_CMC_Mirage
+# IS3EU - canonical preserved
+Repbase	(?i)^IS3EU.*	DNA	IS3EU	Repbase_IS3EU
+# Repbase IS* / ISL2EU - no Dfam canonical subtype, use bare DNA
+Repbase	(?i)^IS481EU.*	DNA	Unknown	Repbase_IS481EU_to_bare
+Repbase	(?i)^ISL2EU.*	DNA	PIF-ISL2EU	Repbase_ISL2EU_to_PIF_ISL2EU
+Repbase	(?i)^ISFUN1.*	DNA	Unknown	Repbase_ISFUN1_to_bare
+# Replitron - no Dfam canonical; bare DNA
+Repbase	(?i)^Replitron.*	DNA	Unknown	Repbase_Replitron_to_bare
+Repbase	(?i)^Ed_ERE1.*	DNA	Unknown	Repbase_Ed_ERE1
+# MITE - structural class, not Dfam canonical -> bare DNA
+Repbase	(?i)^MITE.*	DNA	Unknown	Repbase_MITE_to_bare
+Repbase	(?i)^Zebrafish MITE.*	DNA	Unknown	Repbase_Zebrafish_MITE_to_bare
+Repbase	(?i)^miniature inverted repeat.*	DNA	Unknown	Repbase_miniature_IR_to_bare
+# DNA transposon generics
+Repbase	(?i)^DNA transposon.*	DNA	Unknown	Repbase_DNA_generic
+Repbase	(?i)^DNA Virus.*	DNA	Unknown	Repbase_DNA_Virus
+Repbase	(?i)^DNA$	DNA	Unknown	Repbase_DNA_bare
+Repbase	(?i)^Non-autonomous DNA transposon.*	DNA	Unknown	Repbase_NonAuto_DNA
+Repbase	(?i)^non-autonomous DNA transposon.*	DNA	Unknown	Repbase_NonAuto_DNA_lower
+Repbase	(?i)^nonautonomous DNA transposon.*	DNA	Unknown	Repbase_NonAuto_DNA_no_dash
+Repbase	(?i)^Nonautonomous.*	DNA	Unknown	Repbase_Nonauto_generic
+# Casposon - canonical
+Repbase	(?i)^Casposon.*	DNA	Casposons	Repbase_Casposon
+
+# ----- Satellite / Simple Repeat / Tandem (canonical Satellite subtypes) -----
+Repbase	(?i)^Centromeric.*	Satellite	centromeric	Repbase_Centromeric_canon
+Repbase	(?i)^Pericentromeric.*	Satellite	centromeric	Repbase_Pericentromeric
+Repbase	(?i)^CENSTRIG.*	Satellite	centromeric	Repbase_CENSTRIG
+Repbase	(?i)^Acromeric.*	Satellite	acromeric	Repbase_Acromeric_canon
+Repbase	(?i)^Macro.*	Satellite	macro	Repbase_Macro_canon
+Repbase	(?i)^Subtelomeric.*	Satellite	subtelomeric	Repbase_Subtelomeric_canon
+# Sex-chromosome-specific satellites (Dfam canonical)
+Repbase	(?i)^Y[ _-]?chromosom.*	Satellite	Y-chromosome	Repbase_Y_chromosome_satellite
+Repbase	(?i)^W[ _-]?chromosom.*	Satellite	W-chromosome	Repbase_W_chromosome_satellite
+Repbase	(?i)^Satellite.*	Satellite	Unknown	Repbase_Satellite
+Repbase	(?i)^satellite.*	Satellite	Unknown	Repbase_satellite_lower
+Repbase	(?-i:^SAT)$	Satellite	Unknown	Repbase_SAT_strict
+Repbase	(?i)^MSAT.*	Satellite	Unknown	Repbase_MSAT
+Repbase	(?i)^Telomeric region repeat.*	Satellite	Unknown	Repbase_Telomeric
+Repbase	(?i)^Tandem repeat.*	Satellite	Unknown	Repbase_Tandem
+Repbase	(?i)^Tandemly repetitive sequence.*	Satellite	Unknown	Repbase_Tandemly
+Repbase	(?i)^tandem repeat.*	Satellite	Unknown	Repbase_tandem_lower
+Repbase	(?i)^\(CA\)n related.*	Simple_repeat	Unknown	Repbase_CAn
+Repbase	(?i)^Simple Repeat.*	Simple_repeat	Unknown	Repbase_Simple
+Repbase	(?i)^Simple_repeat.*	Simple_repeat	Unknown	Repbase_Simple_underscore
+Repbase	(?i)^AT-rich DNA repeat.*	Simple_repeat	Unknown	Repbase_ATrich
+Repbase	(?i)^direct repeat.*	Simple_repeat	Unknown	Repbase_direct
+Repbase	(?i)^Inverted repeat.*	Simple_repeat	Unknown	Repbase_Inverted
+Repbase	(?i)^5-bp TSD.*	Simple_repeat	Unknown	Repbase_TSD
+Repbase	(?i)^Dispersed repeat.*	Unknown	Unknown	Repbase_Dispersed
+
+# ----- rRNA / tRNA / snRNA / scRNA (top-level Dfam canonical Classes) -----
+Repbase	(?-i:^rRNA)$	rRNA	Unknown	Repbase_rRNA_canonical
+Repbase	(?-i:^tRNA)$	tRNA	Unknown	Repbase_tRNA_canonical
+Repbase	(?-i:^snRNA)$	snRNA	Unknown	Repbase_snRNA_canonical
+Repbase	(?-i:^scRNA)$	scRNA	Unknown	Repbase_scRNA_canonical
+# v5.3.5: snoRNA had no Repbase rule; previously fell to catchall as Unknown/Unknown.
+Repbase	(?-i:^snoRNA)$	Retroposon	sno	Repbase_snoRNA_to_Retroposon_sno
+Repbase	(?i)^5SrRNA.*	rRNA	Unknown	Repbase_5SrRNA_to_rRNA
+Repbase	(?-i:^5S_)	rRNA	Unknown	Repbase_5S_prefix_to_rRNA
+Repbase	(?i)^RP5S.*	rRNA	Unknown	Repbase_RP5S_to_rRNA
+
+# ----- Generic / Catch-fragment buckets -----
+Repbase	(?i)^Transposable Element.*	Unknown	Unknown	Repbase_TE_generic
+Repbase	(?i)^transposable element.*	Unknown	Unknown	Repbase_TE_generic_lower
+Repbase	(?i)^transposon.*	Unknown	Unknown	Repbase_transposon_lower
+Repbase	(?i)^Repetitive element.*	Unknown	Unknown	Repbase_RepetitiveElement
+Repbase	(?i)^Repetitive sequence.*	Unknown	Unknown	Repbase_RepetitiveSequence
+Repbase	(?i)^Repetitive DNA.*	Unknown	Unknown	Repbase_RepetitiveDNA
+Repbase	(?i)^Repeat sequence.*	Unknown	Unknown	Repbase_RepeatSequence
+Repbase	(?i)^Repeat DNA.*	Unknown	Unknown	Repbase_RepeatDNA
+Repbase	(?i)^Repeat region.*	Unknown	Unknown	Repbase_RepeatRegion
+Repbase	(?i)^Interspersed repeat.*	Unknown	Unknown	Repbase_Interspersed
+Repbase	(?i)^Inerspersed repeat.*	Unknown	Unknown	Repbase_Interspersed_typo
+Repbase	(?i)^Interspersed repetitive sequence.*	Unknown	Unknown	Repbase_InterspersedRepetitive
+Repbase	(?i)^non-classified repeat.*	Unknown	Unknown	Repbase_NonClassified
+Repbase	(?i)^retroelement.*	Unknown	Unknown	Repbase_retroelement
+Repbase	(?i)^Integrated Virus.*	Unknown	Unknown	Repbase_IntegratedVirus
+Repbase	(?i)^conserved$	Unknown	Unknown	Repbase_conserved
+Repbase	(?i)^Putative.*	Unknown	Unknown	Repbase_Putative
+Repbase	(?i)^internal sequence.*	Unknown	Unknown	Repbase_internal_seq
+Repbase	(?i)^Internal sequence.*	Unknown	Unknown	Repbase_Internal_seq_upper
+Repbase	(?i)^Internal part of.*	Unknown	Unknown	Repbase_Internal_part
+Repbase	(?i)^DNA transposon fossil.*	Unknown	Unknown	Repbase_DNA_fossil
+Repbase	(?i)^Non-autonomous DNA transposon fossil.*	Unknown	Unknown	Repbase_NonAuto_fossil
+
+# v5.3.5: moved Foamy / Spumavirus rules above the Repbase catchall.
+# Previously they sat below the catchall and were unreachable dead code.
+Repbase	(?i)^Foamy.*	LTR	ERV-Foamy	Repbase_Foamy_to_ERV_Foamy
+Repbase	(?i)^Spumavirus.*	LTR	ERV-Foamy	Repbase_Spumavirus_to_ERV_Foamy
+
+# ----- REPBASE LOCAL CATCH-ALL (MUST BE THE LAST Repbase RULE) -----
+# v5.3.3: Restricted to BARE names only (no "/"). Inputs already carrying
+# a Class/Subfamily prefix (e.g. from repbase_fixer.py Case 2 "already-fixed
+# header" path, or when RLB re-runs on its own output) must fall through to
+# Global so that canonical Dfam labels pass through unchanged via Section 4.
+Repbase	^[^/]+$	Unknown	Unknown	Repbase_FINAL_catchall_bare_names_only
+
+# ------------------------------------------------------------------------------
+# DFAM RULES  (v5.7: explicit canonical whitelist mirroring Dfam TEClasses.tsv)
+# ------------------------------------------------------------------------------
+# Dfam is itself an input source AND the canonical authority for this dictionary,
+# so every label Dfam can emit is enumerated here as an explicit identity rule
+# (Class/Subtype -> Class, Subtype).  This keeps Dfam inputs from depending on the
+# Global fall-through for canonicalization.  The set below is generated from the
+# repeatmasker_type + repeatmasker_subtype columns of Dfam's TEClasses.tsv
+# (236 distinct labels: 19 bare top-level Classes + 217 Class/Subtype pairs).
+#
+# Bare top-level Classes are emitted as Class/Unknown to preserve the */* output
+# format (e.g. PLE -> PLE/Unknown), exactly as the rest of the pipeline does.
+# A malformed / non-canonical Dfam label (typo, retired name) matches nothing here
+# and correctly falls through to the Global safety net.
+#
+# --- Bare top-level Classes + long-standing synonyms (kept from earlier versions) ---
+# Penelope -> PLE Class (top-level Class). v5.3.5: anchored with $ so PLE/<child> falls through to the canonical PLE rules below.
+Dfam	(?i)^(PLE|Penelope.*)$	PLE	Unknown	Dfam_PLE_canonical
+# Retroposon -> Retroposon Class (top-level Class). v5.3.5: anchored so Retroposon/<child> hits its own canonical rule below.
+Dfam	(?i)^Retroposon$	Retroposon	Unknown	Dfam_Retroposon_canonical
+# Small RNAs -> their own top-level Classes (canonical)
+Dfam	(?i)^snRNA$	snRNA	Unknown	Dfam_snRNA_canonical
+Dfam	(?i)^tRNA$	tRNA	Unknown	Dfam_tRNA_canonical
+Dfam	(?i)^rRNA$	rRNA	Unknown	Dfam_rRNA_canonical
+Dfam	(?i)^scRNA$	scRNA	Unknown	Dfam_scRNA_canonical
+Dfam	(?i)^RNA$	RNA	Unknown	Dfam_RNA_canonical_class
+Dfam	(?i)^snoRNA$	Retroposon	sno	Dfam_snoRNA_to_Retroposon_sno
+Dfam	(?i)^ncRNA$	ncRNA	Unknown	Dfam_ncRNA_preserve_label
+# v5.3.5: split former Dfam_Non_TE_Catch so canonical Satellite/Simple_repeat are preserved.
+Dfam	(?i)^Satellite$	Satellite	Unknown	Dfam_Satellite_canonical
+Dfam	(?i)^Simple_repeat$	Simple_repeat	Unknown	Dfam_Simple_repeat_canonical
+Dfam	(?i)^(Unknown|Nonautonomous.*)$	Unknown	Unknown	Dfam_Non_TE_Catch
+#
+# --- Bare top-level Classes newly enumerated from TEClasses.tsv ---
+Dfam	(?i)^DNA$	DNA	Unknown	Dfam_canon_DNA
+Dfam	(?i)^LINE$	LINE	Unknown	Dfam_canon_LINE
+Dfam	(?i)^LTR$	LTR	Unknown	Dfam_canon_LTR
+Dfam	(?i)^SINE$	SINE	Unknown	Dfam_canon_SINE
+# Bare RC is the rolling-circle/Helicase parent. Dfam itself does not label
+# sequences with a bare 'RC' (the parent node carries no families; only
+# RC/Helitron, RC/Helitron-2, RC/Helentron do). To stay consistent with every
+# other source and the Global rule (bare RC -> RC/Helitron, the dominant child),
+# we map it the same way here rather than to RC/Unknown. Flip to 'RC  Unknown'
+# if you prefer strict identity over cross-source consistency.
+Dfam	(?i)^RC$	RC	Helitron	Dfam_RC_bare_to_Helitron
+Dfam	(?i)^Low_complexity$	Low_complexity	Unknown	Dfam_canon_Low_complexity
+Dfam	(?i)^Segmental$	Segmental	Unknown	Dfam_canon_Segmental
+Dfam	(?i)^Other$	Other	Unknown	Dfam_canon_Other
+Dfam	(?i)^ARTEFACT$	ARTEFACT	Unknown	Dfam_canon_ARTEFACT
+#
+# ===================== Canonical Class/Subtype identity rules =====================
+# ----- DNA transposons (Class II) -----
+Dfam	(?i)^DNA/Academ-1$	DNA	Academ-1	Dfam_canon_DNA_Academ_1
+Dfam	(?i)^DNA/Academ-2$	DNA	Academ-2	Dfam_canon_DNA_Academ_2
+Dfam	(?i)^DNA/Academ-H$	DNA	Academ-H	Dfam_canon_DNA_Academ_H
+Dfam	(?i)^DNA/CMC$	DNA	CMC	Dfam_canon_DNA_CMC
+Dfam	(?i)^DNA/CMC-Chapaev$	DNA	CMC-Chapaev	Dfam_canon_DNA_CMC_Chapaev
+Dfam	(?i)^DNA/CMC-Chapaev-3$	DNA	CMC-Chapaev-3	Dfam_canon_DNA_CMC_Chapaev_3
+Dfam	(?i)^DNA/CMC-EnSpm$	DNA	CMC-EnSpm	Dfam_canon_DNA_CMC_EnSpm
+Dfam	(?i)^DNA/CMC-Mirage$	DNA	CMC-Mirage	Dfam_canon_DNA_CMC_Mirage
+Dfam	(?i)^DNA/CMC-Transib$	DNA	CMC-Transib	Dfam_canon_DNA_CMC_Transib
+Dfam	(?i)^DNA/Casposons$	DNA	Casposons	Dfam_canon_DNA_Casposons
+Dfam	(?i)^DNA/Crypton$	DNA	Crypton	Dfam_canon_DNA_Crypton
+Dfam	(?i)^DNA/Crypton-A$	DNA	Crypton-A	Dfam_canon_DNA_Crypton_A
+Dfam	(?i)^DNA/Crypton-C$	DNA	Crypton-C	Dfam_canon_DNA_Crypton_C
+Dfam	(?i)^DNA/Crypton-F$	DNA	Crypton-F	Dfam_canon_DNA_Crypton_F
+Dfam	(?i)^DNA/Crypton-H$	DNA	Crypton-H	Dfam_canon_DNA_Crypton_H
+Dfam	(?i)^DNA/Crypton-I$	DNA	Crypton-I	Dfam_canon_DNA_Crypton_I
+Dfam	(?i)^DNA/Crypton-R$	DNA	Crypton-R	Dfam_canon_DNA_Crypton_R
+Dfam	(?i)^DNA/Crypton-S$	DNA	Crypton-S	Dfam_canon_DNA_Crypton_S
+Dfam	(?i)^DNA/Crypton-V$	DNA	Crypton-V	Dfam_canon_DNA_Crypton_V
+Dfam	(?i)^DNA/Crypton-X$	DNA	Crypton-X	Dfam_canon_DNA_Crypton_X
+Dfam	(?i)^DNA/Dada$	DNA	Dada	Dfam_canon_DNA_Dada
+Dfam	(?i)^DNA/Ginger$	DNA	Ginger	Dfam_canon_DNA_Ginger
+Dfam	(?i)^DNA/Ginger-1$	DNA	Ginger-1	Dfam_canon_DNA_Ginger_1
+Dfam	(?i)^DNA/Ginger-2$	DNA	Ginger-2	Dfam_canon_DNA_Ginger_2
+Dfam	(?i)^DNA/IS3EU$	DNA	IS3EU	Dfam_canon_DNA_IS3EU
+Dfam	(?i)^DNA/Kolobok$	DNA	Kolobok	Dfam_canon_DNA_Kolobok
+Dfam	(?i)^DNA/Kolobok-E$	DNA	Kolobok-E	Dfam_canon_DNA_Kolobok_E
+Dfam	(?i)^DNA/Kolobok-H$	DNA	Kolobok-H	Dfam_canon_DNA_Kolobok_H
+Dfam	(?i)^DNA/Kolobok-Hydra$	DNA	Kolobok-Hydra	Dfam_canon_DNA_Kolobok_Hydra
+Dfam	(?i)^DNA/Kolobok-T2$	DNA	Kolobok-T2	Dfam_canon_DNA_Kolobok_T2
+Dfam	(?i)^DNA/MULE$	DNA	MULE	Dfam_canon_DNA_MULE
+Dfam	(?i)^DNA/MULE-F$	DNA	MULE-F	Dfam_canon_DNA_MULE_F
+Dfam	(?i)^DNA/MULE-MuDR$	DNA	MULE-MuDR	Dfam_canon_DNA_MULE_MuDR
+Dfam	(?i)^DNA/MULE-NOF$	DNA	MULE-NOF	Dfam_canon_DNA_MULE_NOF
+Dfam	(?i)^DNA/MULE-Ricksha$	DNA	MULE-Ricksha	Dfam_canon_DNA_MULE_Ricksha
+Dfam	(?i)^DNA/Maverick$	DNA	Maverick	Dfam_canon_DNA_Maverick
+Dfam	(?i)^DNA/Maverick-Mavirus$	DNA	Maverick-Mavirus	Dfam_canon_DNA_Maverick_Mavirus
+Dfam	(?i)^DNA/Merlin$	DNA	Merlin	Dfam_canon_DNA_Merlin
+Dfam	(?i)^DNA/Novosib$	DNA	Novosib	Dfam_canon_DNA_Novosib
+Dfam	(?i)^DNA/P$	DNA	P	Dfam_canon_DNA_P
+Dfam	(?i)^DNA/P-Fungi$	DNA	P-Fungi	Dfam_canon_DNA_P_Fungi
+Dfam	(?i)^DNA/PIF$	DNA	PIF	Dfam_canon_DNA_PIF
+Dfam	(?i)^DNA/PIF-HarbS$	DNA	PIF-HarbS	Dfam_canon_DNA_PIF_HarbS
+Dfam	(?i)^DNA/PIF-Harbinger$	DNA	PIF-Harbinger	Dfam_canon_DNA_PIF_Harbinger
+Dfam	(?i)^DNA/PIF-ISL2EU$	DNA	PIF-ISL2EU	Dfam_canon_DNA_PIF_ISL2EU
+Dfam	(?i)^DNA/PIF-Spy$	DNA	PIF-Spy	Dfam_canon_DNA_PIF_Spy
+Dfam	(?i)^DNA/PiggyBac$	DNA	PiggyBac	Dfam_canon_DNA_PiggyBac
+Dfam	(?i)^DNA/PiggyBac-A$	DNA	PiggyBac-A	Dfam_canon_DNA_PiggyBac_A
+Dfam	(?i)^DNA/PiggyBac-X$	DNA	PiggyBac-X	Dfam_canon_DNA_PiggyBac_X
+Dfam	(?i)^DNA/Sola-1$	DNA	Sola-1	Dfam_canon_DNA_Sola_1
+Dfam	(?i)^DNA/Sola-2$	DNA	Sola-2	Dfam_canon_DNA_Sola_2
+Dfam	(?i)^DNA/Sola-3$	DNA	Sola-3	Dfam_canon_DNA_Sola_3
+Dfam	(?i)^DNA/TcMar$	DNA	TcMar	Dfam_canon_DNA_TcMar
+Dfam	(?i)^DNA/TcMar-Ant1$	DNA	TcMar-Ant1	Dfam_canon_DNA_TcMar_Ant1
+Dfam	(?i)^DNA/TcMar-Cweed$	DNA	TcMar-Cweed	Dfam_canon_DNA_TcMar_Cweed
+Dfam	(?i)^DNA/TcMar-Fot1$	DNA	TcMar-Fot1	Dfam_canon_DNA_TcMar_Fot1
+Dfam	(?i)^DNA/TcMar-Gizmo$	DNA	TcMar-Gizmo	Dfam_canon_DNA_TcMar_Gizmo
+Dfam	(?i)^DNA/TcMar-IS885$	DNA	TcMar-IS885	Dfam_canon_DNA_TcMar_IS885
+Dfam	(?i)^DNA/TcMar-ISRm11$	DNA	TcMar-ISRm11	Dfam_canon_DNA_TcMar_ISRm11
+Dfam	(?i)^DNA/TcMar-Mariner$	DNA	TcMar-Mariner	Dfam_canon_DNA_TcMar_Mariner
+Dfam	(?i)^DNA/TcMar-Mogwai$	DNA	TcMar-Mogwai	Dfam_canon_DNA_TcMar_Mogwai
+Dfam	(?i)^DNA/TcMar-Pogo$	DNA	TcMar-Pogo	Dfam_canon_DNA_TcMar_Pogo
+Dfam	(?i)^DNA/TcMar-Sagan$	DNA	TcMar-Sagan	Dfam_canon_DNA_TcMar_Sagan
+Dfam	(?i)^DNA/TcMar-Stowaway$	DNA	TcMar-Stowaway	Dfam_canon_DNA_TcMar_Stowaway
+Dfam	(?i)^DNA/TcMar-Tc1$	DNA	TcMar-Tc1	Dfam_canon_DNA_TcMar_Tc1
+Dfam	(?i)^DNA/TcMar-Tc2$	DNA	TcMar-Tc2	Dfam_canon_DNA_TcMar_Tc2
+Dfam	(?i)^DNA/TcMar-Tc4$	DNA	TcMar-Tc4	Dfam_canon_DNA_TcMar_Tc4
+Dfam	(?i)^DNA/TcMar-Tigger$	DNA	TcMar-Tigger	Dfam_canon_DNA_TcMar_Tigger
+Dfam	(?i)^DNA/TcMar-m44$	DNA	TcMar-m44	Dfam_canon_DNA_TcMar_m44
+Dfam	(?i)^DNA/Zator$	DNA	Zator	Dfam_canon_DNA_Zator
+Dfam	(?i)^DNA/Zisupton$	DNA	Zisupton	Dfam_canon_DNA_Zisupton
+Dfam	(?i)^DNA/hAT$	DNA	hAT	Dfam_canon_DNA_hAT
+Dfam	(?i)^DNA/hAT-Ac$	DNA	hAT-Ac	Dfam_canon_DNA_hAT_Ac
+Dfam	(?i)^DNA/hAT-Blackjack$	DNA	hAT-Blackjack	Dfam_canon_DNA_hAT_Blackjack
+Dfam	(?i)^DNA/hAT-Charlie$	DNA	hAT-Charlie	Dfam_canon_DNA_hAT_Charlie
+Dfam	(?i)^DNA/hAT-Pegasus$	DNA	hAT-Pegasus	Dfam_canon_DNA_hAT_Pegasus
+Dfam	(?i)^DNA/hAT-Restless$	DNA	hAT-Restless	Dfam_canon_DNA_hAT_Restless
+Dfam	(?i)^DNA/hAT-Tag1$	DNA	hAT-Tag1	Dfam_canon_DNA_hAT_Tag1
+Dfam	(?i)^DNA/hAT-Tip100$	DNA	hAT-Tip100	Dfam_canon_DNA_hAT_Tip100
+Dfam	(?i)^DNA/hAT-hAT1$	DNA	hAT-hAT1	Dfam_canon_DNA_hAT_hAT1
+Dfam	(?i)^DNA/hAT-hAT19$	DNA	hAT-hAT19	Dfam_canon_DNA_hAT_hAT19
+Dfam	(?i)^DNA/hAT-hAT5$	DNA	hAT-hAT5	Dfam_canon_DNA_hAT_hAT5
+Dfam	(?i)^DNA/hAT-hAT6$	DNA	hAT-hAT6	Dfam_canon_DNA_hAT_hAT6
+Dfam	(?i)^DNA/hAT-hATm$	DNA	hAT-hATm	Dfam_canon_DNA_hAT_hATm
+Dfam	(?i)^DNA/hAT-hATw$	DNA	hAT-hATw	Dfam_canon_DNA_hAT_hATw
+Dfam	(?i)^DNA/hAT-hATx$	DNA	hAT-hATx	Dfam_canon_DNA_hAT_hATx
+Dfam	(?i)^DNA/hAT-hobo$	DNA	hAT-hobo	Dfam_canon_DNA_hAT_hobo
+# ----- LINE / non-LTR retrotransposons -----
+Dfam	(?i)^LINE/CR1$	LINE	CR1	Dfam_canon_LINE_CR1
+Dfam	(?i)^LINE/CR1-Zenon$	LINE	CR1-Zenon	Dfam_canon_LINE_CR1_Zenon
+Dfam	(?i)^LINE/CRE$	LINE	CRE	Dfam_canon_LINE_CRE
+Dfam	(?i)^LINE/CRE-1$	LINE	CRE-1	Dfam_canon_LINE_CRE_1
+Dfam	(?i)^LINE/CRE-2$	LINE	CRE-2	Dfam_canon_LINE_CRE_2
+Dfam	(?i)^LINE/CRE-Ambal$	LINE	CRE-Ambal	Dfam_canon_LINE_CRE_Ambal
+Dfam	(?i)^LINE/CRE-Odin$	LINE	CRE-Odin	Dfam_canon_LINE_CRE_Odin
+Dfam	(?i)^LINE/Deceiver$	LINE	Deceiver	Dfam_canon_LINE_Deceiver
+Dfam	(?i)^LINE/Dong-R4$	LINE	Dong-R4	Dfam_canon_LINE_Dong_R4
+Dfam	(?i)^LINE/Dualen$	LINE	Dualen	Dfam_canon_LINE_Dualen
+Dfam	(?i)^LINE/Genie$	LINE	Genie	Dfam_canon_LINE_Genie
+Dfam	(?i)^LINE/I$	LINE	I	Dfam_canon_LINE_I
+Dfam	(?i)^LINE/I-Jockey$	LINE	I-Jockey	Dfam_canon_LINE_I_Jockey
+Dfam	(?i)^LINE/L1$	LINE	L1	Dfam_canon_LINE_L1
+Dfam	(?i)^LINE/L1-DRE$	LINE	L1-DRE	Dfam_canon_LINE_L1_DRE
+Dfam	(?i)^LINE/L1-Tx1$	LINE	L1-Tx1	Dfam_canon_LINE_L1_Tx1
+Dfam	(?i)^LINE/L1-Zorro$	LINE	L1-Zorro	Dfam_canon_LINE_L1_Zorro
+Dfam	(?i)^LINE/L2$	LINE	L2	Dfam_canon_LINE_L2
+Dfam	(?i)^LINE/Proto1$	LINE	Proto1	Dfam_canon_LINE_Proto1
+Dfam	(?i)^LINE/Proto2$	LINE	Proto2	Dfam_canon_LINE_Proto2
+Dfam	(?i)^LINE/R1$	LINE	R1	Dfam_canon_LINE_R1
+Dfam	(?i)^LINE/R1-LOA$	LINE	R1-LOA	Dfam_canon_LINE_R1_LOA
+Dfam	(?i)^LINE/R2$	LINE	R2	Dfam_canon_LINE_R2
+Dfam	(?i)^LINE/R2-Hero$	LINE	R2-Hero	Dfam_canon_LINE_R2_Hero
+Dfam	(?i)^LINE/R2-NeSL$	LINE	R2-NeSL	Dfam_canon_LINE_R2_NeSL
+Dfam	(?i)^LINE/RTE$	LINE	RTE	Dfam_canon_LINE_RTE
+Dfam	(?i)^LINE/RTE-BovB$	LINE	RTE-BovB	Dfam_canon_LINE_RTE_BovB
+Dfam	(?i)^LINE/RTE-ORTE$	LINE	RTE-ORTE	Dfam_canon_LINE_RTE_ORTE
+Dfam	(?i)^LINE/RTE-RTE$	LINE	RTE-RTE	Dfam_canon_LINE_RTE_RTE
+Dfam	(?i)^LINE/RTE-X$	LINE	RTE-X	Dfam_canon_LINE_RTE_X
+Dfam	(?i)^LINE/Rex-Babar$	LINE	Rex-Babar	Dfam_canon_LINE_Rex_Babar
+Dfam	(?i)^LINE/Tad1$	LINE	Tad1	Dfam_canon_LINE_Tad1
+# ----- LTR retrotransposons -----
+Dfam	(?i)^LTR/Cassandra$	LTR	Cassandra	Dfam_canon_LTR_Cassandra
+Dfam	(?i)^LTR/Caulimovirus$	LTR	Caulimovirus	Dfam_canon_LTR_Caulimovirus
+Dfam	(?i)^LTR/Copia$	LTR	Copia	Dfam_canon_LTR_Copia
+Dfam	(?i)^LTR/DIRS$	LTR	DIRS	Dfam_canon_LTR_DIRS
+Dfam	(?i)^LTR/DIRS-Q$	LTR	DIRS-Q	Dfam_canon_LTR_DIRS_Q
+Dfam	(?i)^LTR/ERV$	LTR	ERV	Dfam_canon_LTR_ERV
+Dfam	(?i)^LTR/ERV-Foamy$	LTR	ERV-Foamy	Dfam_canon_LTR_ERV_Foamy
+Dfam	(?i)^LTR/ERV-Lenti$	LTR	ERV-Lenti	Dfam_canon_LTR_ERV_Lenti
+Dfam	(?i)^LTR/ERV1$	LTR	ERV1	Dfam_canon_LTR_ERV1
+Dfam	(?i)^LTR/ERV4$	LTR	ERV4	Dfam_canon_LTR_ERV4
+Dfam	(?i)^LTR/ERVK$	LTR	ERVK	Dfam_canon_LTR_ERVK
+Dfam	(?i)^LTR/ERVL$	LTR	ERVL	Dfam_canon_LTR_ERVL
+Dfam	(?i)^LTR/ERVL-MaLR$	LTR	ERVL-MaLR	Dfam_canon_LTR_ERVL_MaLR
+Dfam	(?i)^LTR/Gypsy$	LTR	Gypsy	Dfam_canon_LTR_Gypsy
+Dfam	(?i)^LTR/Ngaro$	LTR	Ngaro	Dfam_canon_LTR_Ngaro
+Dfam	(?i)^LTR/Pao$	LTR	Pao	Dfam_canon_LTR_Pao
+Dfam	(?i)^LTR/TRIM$	LTR	TRIM	Dfam_canon_LTR_TRIM
+Dfam	(?i)^LTR/Viper$	LTR	Viper	Dfam_canon_LTR_Viper
+# ----- SINE -----
+Dfam	(?i)^SINE/5S$	SINE	5S	Dfam_canon_SINE_5S
+Dfam	(?i)^SINE/5S-Core-RTE$	SINE	5S-Core-RTE	Dfam_canon_SINE_5S_Core_RTE
+Dfam	(?i)^SINE/5S-Deu$	SINE	5S-Deu	Dfam_canon_SINE_5S_Deu
+Dfam	(?i)^SINE/5S-Deu-L2$	SINE	5S-Deu-L2	Dfam_canon_SINE_5S_Deu_L2
+Dfam	(?i)^SINE/5S-RTE$	SINE	5S-RTE	Dfam_canon_SINE_5S_RTE
+Dfam	(?i)^SINE/5S-Sauria-RTE$	SINE	5S-Sauria-RTE	Dfam_canon_SINE_5S_Sauria_RTE
+Dfam	(?i)^SINE/7SL$	SINE	7SL	Dfam_canon_SINE_7SL
+Dfam	(?i)^SINE/Alu$	SINE	Alu	Dfam_canon_SINE_Alu
+Dfam	(?i)^SINE/B2$	SINE	B2	Dfam_canon_SINE_B2
+Dfam	(?i)^SINE/B4$	SINE	B4	Dfam_canon_SINE_B4
+Dfam	(?i)^SINE/Ceph$	SINE	Ceph	Dfam_canon_SINE_Ceph
+Dfam	(?i)^SINE/Core$	SINE	Core	Dfam_canon_SINE_Core
+Dfam	(?i)^SINE/Core-RTE$	SINE	Core-RTE	Dfam_canon_SINE_Core_RTE
+Dfam	(?i)^SINE/ERV1$	SINE	ERV1	Dfam_canon_SINE_ERV1
+Dfam	(?i)^SINE/ID$	SINE	ID	Dfam_canon_SINE_ID
+Dfam	(?i)^SINE/MIR$	SINE	MIR	Dfam_canon_SINE_MIR
+Dfam	(?i)^SINE/R1$	SINE	R1	Dfam_canon_SINE_R1
+Dfam	(?i)^SINE/RTE-BovB$	SINE	RTE-BovB	Dfam_canon_SINE_RTE_BovB
+Dfam	(?i)^SINE/U$	SINE	U	Dfam_canon_SINE_U
+Dfam	(?i)^SINE/U-L1$	SINE	U-L1	Dfam_canon_SINE_U_L1
+Dfam	(?i)^SINE/tRNA$	SINE	tRNA	Dfam_canon_SINE_tRNA
+Dfam	(?i)^SINE/tRNA-5S$	SINE	tRNA-5S	Dfam_canon_SINE_tRNA_5S
+Dfam	(?i)^SINE/tRNA-7SL$	SINE	tRNA-7SL	Dfam_canon_SINE_tRNA_7SL
+Dfam	(?i)^SINE/tRNA-CR1$	SINE	tRNA-CR1	Dfam_canon_SINE_tRNA_CR1
+Dfam	(?i)^SINE/tRNA-Ceph$	SINE	tRNA-Ceph	Dfam_canon_SINE_tRNA_Ceph
+Dfam	(?i)^SINE/tRNA-Ceph-RTE$	SINE	tRNA-Ceph-RTE	Dfam_canon_SINE_tRNA_Ceph_RTE
+Dfam	(?i)^SINE/tRNA-Core$	SINE	tRNA-Core	Dfam_canon_SINE_tRNA_Core
+Dfam	(?i)^SINE/tRNA-Core-RTE$	SINE	tRNA-Core-RTE	Dfam_canon_SINE_tRNA_Core_RTE
+Dfam	(?i)^SINE/tRNA-Deu$	SINE	tRNA-Deu	Dfam_canon_SINE_tRNA_Deu
+Dfam	(?i)^SINE/tRNA-Deu-CR1$	SINE	tRNA-Deu-CR1	Dfam_canon_SINE_tRNA_Deu_CR1
+Dfam	(?i)^SINE/tRNA-Deu-I$	SINE	tRNA-Deu-I	Dfam_canon_SINE_tRNA_Deu_I
+Dfam	(?i)^SINE/tRNA-Deu-L2$	SINE	tRNA-Deu-L2	Dfam_canon_SINE_tRNA_Deu_L2
+Dfam	(?i)^SINE/tRNA-Deu-RTE$	SINE	tRNA-Deu-RTE	Dfam_canon_SINE_tRNA_Deu_RTE
+Dfam	(?i)^SINE/tRNA-I$	SINE	tRNA-I	Dfam_canon_SINE_tRNA_I
+Dfam	(?i)^SINE/tRNA-Jockey$	SINE	tRNA-Jockey	Dfam_canon_SINE_tRNA_Jockey
+Dfam	(?i)^SINE/tRNA-L1$	SINE	tRNA-L1	Dfam_canon_SINE_tRNA_L1
+Dfam	(?i)^SINE/tRNA-L2$	SINE	tRNA-L2	Dfam_canon_SINE_tRNA_L2
+Dfam	(?i)^SINE/tRNA-Mermaid$	SINE	tRNA-Mermaid	Dfam_canon_SINE_tRNA_Mermaid
+Dfam	(?i)^SINE/tRNA-Meta$	SINE	tRNA-Meta	Dfam_canon_SINE_tRNA_Meta
+Dfam	(?i)^SINE/tRNA-R2$	SINE	tRNA-R2	Dfam_canon_SINE_tRNA_R2
+Dfam	(?i)^SINE/tRNA-RTE$	SINE	tRNA-RTE	Dfam_canon_SINE_tRNA_RTE
+Dfam	(?i)^SINE/tRNA-Rex$	SINE	tRNA-Rex	Dfam_canon_SINE_tRNA_Rex
+Dfam	(?i)^SINE/tRNA-Sauria$	SINE	tRNA-Sauria	Dfam_canon_SINE_tRNA_Sauria
+Dfam	(?i)^SINE/tRNA-Sauria-L2$	SINE	tRNA-Sauria-L2	Dfam_canon_SINE_tRNA_Sauria_L2
+Dfam	(?i)^SINE/tRNA-Sauria-RTE$	SINE	tRNA-Sauria-RTE	Dfam_canon_SINE_tRNA_Sauria_RTE
+Dfam	(?i)^SINE/tRNA-Tad1$	SINE	tRNA-Tad1	Dfam_canon_SINE_tRNA_Tad1
+Dfam	(?i)^SINE/tRNA-V$	SINE	tRNA-V	Dfam_canon_SINE_tRNA_V
+Dfam	(?i)^SINE/tRNA-V-CR1$	SINE	tRNA-V-CR1	Dfam_canon_SINE_tRNA_V_CR1
+Dfam	(?i)^SINE/tRNA-V-Core-L2$	SINE	tRNA-V-Core-L2	Dfam_canon_SINE_tRNA_V_Core_L2
+Dfam	(?i)^SINE/tRNA-V-L2$	SINE	tRNA-V-L2	Dfam_canon_SINE_tRNA_V_L2
+Dfam	(?i)^SINE/tRNA-V-RTE$	SINE	tRNA-V-RTE	Dfam_canon_SINE_tRNA_V_RTE
+# ----- Penelope-like elements -----
+Dfam	(?i)^PLE/Athena$	PLE	Athena	Dfam_canon_PLE_Athena
+Dfam	(?i)^PLE/Chlamys$	PLE	Chlamys	Dfam_canon_PLE_Chlamys
+Dfam	(?i)^PLE/Coprina$	PLE	Coprina	Dfam_canon_PLE_Coprina
+Dfam	(?i)^PLE/Hydra$	PLE	Hydra	Dfam_canon_PLE_Hydra
+Dfam	(?i)^PLE/Naiad$	PLE	Naiad	Dfam_canon_PLE_Naiad
+Dfam	(?i)^PLE/Nematis$	PLE	Nematis	Dfam_canon_PLE_Nematis
+Dfam	(?i)^PLE/Neptune$	PLE	Neptune	Dfam_canon_PLE_Neptune
+Dfam	(?i)^PLE/Poseidon$	PLE	Poseidon	Dfam_canon_PLE_Poseidon
+# ----- Rolling-circle (Helitron) -----
+Dfam	(?i)^RC/Helentron$	RC	Helentron	Dfam_canon_RC_Helentron
+Dfam	(?i)^RC/Helitron$	RC	Helitron	Dfam_canon_RC_Helitron
+Dfam	(?i)^RC/Helitron-2$	RC	Helitron-2	Dfam_canon_RC_Helitron_2
+# ----- Retroposon -----
+Dfam	(?i)^Retroposon/I-derived$	Retroposon	I-derived	Dfam_canon_Retroposon_I_derived
+Dfam	(?i)^Retroposon/L1-dep$	Retroposon	L1-dep	Dfam_canon_Retroposon_L1_dep
+Dfam	(?i)^Retroposon/L1-derived$	Retroposon	L1-derived	Dfam_canon_Retroposon_L1_derived
+Dfam	(?i)^Retroposon/L2-derived$	Retroposon	L2-derived	Dfam_canon_Retroposon_L2_derived
+Dfam	(?i)^Retroposon/R4-derived$	Retroposon	R4-derived	Dfam_canon_Retroposon_R4_derived
+Dfam	(?i)^Retroposon/RTE-derived$	Retroposon	RTE-derived	Dfam_canon_Retroposon_RTE_derived
+Dfam	(?i)^Retroposon/SVA$	Retroposon	SVA	Dfam_canon_Retroposon_SVA
+Dfam	(?i)^Retroposon/sno$	Retroposon	sno	Dfam_canon_Retroposon_sno
+Dfam	(?i)^Retroposon/sno-L1$	Retroposon	sno-L1	Dfam_canon_Retroposon_sno_L1
+# ----- Satellite -----
+Dfam	(?i)^Satellite/W-chromosome$	Satellite	W-chromosome	Dfam_canon_Satellite_W_chromosome
+Dfam	(?i)^Satellite/Y-chromosome$	Satellite	Y-chromosome	Dfam_canon_Satellite_Y_chromosome
+Dfam	(?i)^Satellite/acromeric$	Satellite	acromeric	Dfam_canon_Satellite_acromeric
+Dfam	(?i)^Satellite/centromeric$	Satellite	centromeric	Dfam_canon_Satellite_centromeric
+Dfam	(?i)^Satellite/macro$	Satellite	macro	Dfam_canon_Satellite_macro
+Dfam	(?i)^Satellite/subtelomeric$	Satellite	subtelomeric	Dfam_canon_Satellite_subtelomeric
+# ----- Other -----
+Dfam	(?i)^Other/DNA_virus$	Other	DNA_virus	Dfam_canon_Other_DNA_virus
+# ----- Unknown -----
+Dfam	(?i)^Unknown/TATE$	Unknown	TATE	Dfam_canon_Unknown_TATE
+Dfam	(?i)^Unknown/centromeric$	Unknown	centromeric	Dfam_canon_Unknown_centromeric
+
+# ==============================================================================
+# 2. GLOBAL SPECIFIC FIXES (Must be above catch-all rules)
+# ==============================================================================
+Global	(?i)^SINE\?$	SINE	Unknown	Global_SINE_question_fix
+Global	(?i)^LINE\?$	LINE	Unknown	Global_LINE_question_fix
+Global	(?i)^LTR\?$	LTR	Unknown	Global_LTR_question_fix
+Global	(?i)^DNA\?$	DNA	Unknown	Global_DNA_question_fix
+# RC: canonical Class for Helitrons. Bare RC -> RC/Helitron (most common case).
+Global	(?i)^RC$	RC	Helitron	Global_RC_bare_to_RC_Helitron
+Global	(?i)^RC/Helitron-2$	RC	Helitron-2	Global_RC_Helitron_2_canonical
+Global	(?i)^RC/Helentron$	RC	Helentron	Global_RC_Helentron_canonical
+Global	(?i)^RC/Helitron$	RC	Helitron	Global_RC_Helitron_canonical
+Global	(?i)^DNA/Helitron$	RC	Helitron	Global_DNA_Helitron_to_RC_Helitron
+Global	(?i)^Maverick.*	DNA	Maverick	Global_Maverick_to_DNA
+Global	(?i)^DIRS/Ngaro$	LTR	Ngaro	Global_DIRS_Ngaro_to_Ngaro_v54
+Global	(?i)^DIRS(/(unknown|Unknown|NA|na|PAT-like|.+))?$	LTR	DIRS	Global_DIRS_to_LTR_anchored_v54
+# v5.4: EDTA SO file contains a typo concatenating two SO names:
+# 'DIRS_YR_retrotransposonYR/DIRS'. Map it explicitly so it lands on LTR/DIRS.
+Global	(?i)^DIRS_YR_retrotransposonYR/DIRS$	LTR	DIRS	Global_DIRS_YR_typo_concat_to_LTR_DIRS_v54
+# Penelope -> PLE Class (not LINE)
+Global	(?i)^Penelope.*	PLE	Unknown	Global_Penelope_to_PLE
+Global	(?i)^LINE/Penelope.*$	PLE	Unknown	Global_LINE_Penelope_to_PLE
+# v5.4: nonLTR is the Wicker Class for non-LTR retrotransposons (LINE, SINE,
+# PLE, Retroposon). It is not a Dfam Class. EDTA's TE_Sequence_Ontology.txt
+# lists 'nonLTR/Penelope', 'nonLTR/unknown', 'nonLTR/RIR' etc. as aliases.
+# Without these rules they pass through as ('nonLTR', 'Penelope') etc.
+Global	(?i)^nonLTR/Penelope.*$	PLE	Unknown	Global_nonLTR_Penelope_to_PLE_v54
+Global	(?i)^nonLTR/(unknown|Unknown|NA)$	LINE	Unknown	Global_nonLTR_unknown_to_LINE_bare_v54
+Global	(?i)^nonLTR/RIR$	LINE	R2	Global_nonLTR_RIR_to_R2_v54
+Global	(?i)^nonLTR/RIJ$	LINE	I-Jockey	Global_nonLTR_RIJ_to_I_Jockey_v54
+Global	(?i)^nonLTR/RIL$	LINE	L1	Global_nonLTR_RIL_to_L1_v54
+Global	(?i)^nonLTR/RII$	LINE	I	Global_nonLTR_RII_to_I_v54
+Global	(?i)^nonLTR/RIT$	LINE	RTE	Global_nonLTR_RIT_to_RTE_v54
+Global	(?i)^nonLTR/RST$	SINE	tRNA	Global_nonLTR_RST_to_SINE_tRNA_v54
+Global	(?i)^nonLTR/RSL$	SINE	7SL	Global_nonLTR_RSL_to_SINE_7SL_v54
+Global	(?i)^nonLTR/RSS$	SINE	5S	Global_nonLTR_RSS_to_SINE_5S_v54
+Global	(?i)^nonLTR/RPP$	PLE	Unknown	Global_nonLTR_RPP_to_PLE_v54
+# Generic nonLTR/<anything-else> -> LINE/Unknown (most non-LTR Wicker Orders
+# are LINE families). Catch-all MUST come after the specific nonLTR rules.
+Global	(?i)^nonLTR/.+$	LINE	Unknown	Global_nonLTR_generic_to_LINE_bare_v54
+Global	(?i)^nonLTR$	LINE	Unknown	Global_nonLTR_bare_to_LINE_v54
+# Small RNA top-level Class fixes (no longer SINE)
+Global	(?i)^snRNA(/.*)?$	snRNA	Unknown	Global_snRNA_to_snRNA_class
+Global	(?i)^tRNA(/.*)?$	tRNA	Unknown	Global_tRNA_to_tRNA_class
+Global	(?i)^rRNA(/.*)?$	rRNA	Unknown	Global_rRNA_to_rRNA_class
+Global	(?i)^scRNA(/.*)?$	scRNA	Unknown	Global_scRNA_to_scRNA_class
+Global	(?i)^RNA(/.*)?$	RNA	Unknown	Global_RNA_canonical_class
+Global	(?i)^snoRNA(/.*)?$	Retroposon	sno	Global_snoRNA_to_Retroposon_sno
+Global	(?i)^ncRNA(/.*)?$	ncRNA	Unknown	Global_ncRNA_preserve_label
+
+# ==============================================================================
+# 2.5 CANONICAL SYNONYM MAPPING (cross-library nomenclature harmonization)
+# ------------------------------------------------------------------------------
+# Activates after Section 1/5 and Section 2 miss. Sits above Section 3
+# fallbacks so canonical labels (LINE/L1, DNA/hAT-Charlie, etc.) survive
+# unchanged via Section 4 pass-through.
+#
+# v5 internal block order (preserve):
+#   A. Non-TE chromosomal features (Satellite remap from old DROP)
+#   B. HiTE SUB_* artifacts -> Unknown
+#   C. Question-mark composite labels
+#   D. (RESERVED - intentionally empty in v5; no subfamily rollups)
+#   E. Old RepeatMasker / TAIR10 synonyms (single-mapping fixes)
+#   F. DT* nomenclature in Global (HiTE / MTEC use the same DT* encoding)
+#   G. riceTElib special prefixes (DNAnona/, DNAauto/, MITE/Tourist, Evirus/)
+#   H. LTR specialty variants (TRIM, Solo, LARD, CRM)
+# ==============================================================================
+
+# ----- Block A: Non-TE chromosomal features -----
+# Use canonical Satellite subtypes from Dfam where available.
+Global	(?i)^knob/.*	Satellite	Unknown	Global_knob_to_Satellite
+Global	(?i)^Cent/.*	Satellite	centromeric	Global_Cent_to_centromeric
+Global	(?i)^Centro/.*	Satellite	centromeric	Global_Centro_to_centromeric
+Global	(?i)^centromere/.*	Satellite	centromeric	Global_centromere_full_to_centromeric
+Global	(?i)^subtelomere/.*	Satellite	subtelomeric	Global_subtelomere_to_subtelomeric
+Global	(?i)^telo(/.*)?$	Satellite	Unknown	Global_telo_abbreviation_to_Satellite
+Global	(?i)^telomere(/.*)?$	Satellite	Unknown	Global_telomere_full_to_Satellite
+Global	(?i)^rDNA/.*	rRNA	Unknown	Global_rDNA_to_rRNA
+Global	(?i)^Satellite/rice$	Satellite	Unknown	Global_Satellite_rice_to_Satellite
+
+# ----- Block B: HiTE SUB_* artifacts -> Unknown -----
+Global	(?i)^SUB_.*	Unknown	Unknown	Global_HiTE_SUB_artifact
+
+# ----- Block C: Question-mark composite labels -----
+Global	(?i)^LINE\?/Unknown$	LINE	Unknown	Global_LINE_question_Unknown
+Global	(?i)^LINE\?/L1$	LINE	L1	Global_LINE_question_L1
+Global	(?i)^SINE/tRNA\?$	SINE	tRNA	Global_SINE_tRNA_question
+
+# ----- Block D: RESERVED (no subfamily rollups in v5) -----
+# Canonical subfamily labels (DNA/hAT-Charlie, DNA/TcMar-Mariner,
+# SINE/tRNA-Deu-L2, LINE/L1-Tx1, LTR/ERV1, etc.) MUST pass through
+# unchanged. The Section 4 catch-all handles them via backreference.
+
+# ----- Block E: TAIR10 / older RepeatMasker synonym fixes -----
+Global	(?i)^DNA/HAT$	DNA	hAT	Global_HAT_case_fix
+Global	(?i)^DNA/MuDR$	DNA	MULE	Global_MuDR_superfamily_to_MULE_parent
+Global	(?i)^DNA/En-Spm$	DNA	CMC	Global_EnSpm_dash_to_CMC_parent
+Global	(?i)^DNA/Harbinger$	DNA	PIF-Harbinger	Global_Harbinger_to_PIF
+Global	(?i)^DNA/Mariner$	DNA	TcMar-Mariner	Global_Mariner_to_TcMar_Mariner
+Global	(?i)^DNA/Tc1$	DNA	TcMar-Tc1	Global_Tc1_to_TcMar_Tc1
+Global	(?i)^DNA/Pogo$	DNA	TcMar-Pogo	Global_Pogo_to_TcMar_Pogo
+Global	(?i)^DNA/CACTA$	DNA	CMC	Global_literal_CACTA_to_CMC_parent
+Global	(?i)^DNA/Mutator$	DNA	MULE	Global_literal_Mutator_to_MULE_parent
+Global	(?i)^DNA/MULE$	DNA	MULE	Global_DNA_MULE_to_MULE_parent
+# Loa as superfamily of LINE -> canonical R1-LOA
+Global	(?i)^LINE/Loa$	LINE	R1-LOA	Global_LINE_Loa_to_R1_LOA
+Global	(?i)^LINE/I-Jockey$	LINE	I-Jockey	Global_LINE_I_Jockey_canonical
+Global	(?i)^LINE/Jockey$	LINE	I-Jockey	Global_LINE_Jockey_to_I_Jockey
+# LTR/Retrovirus -> LTR/ERV (canonical bare ERV)
+Global	(?i)^LTR/Retrovirus$	LTR	ERV	Global_Retrovirus_to_ERV
+Global	(?i)^LTR/Bel[-_]?Pao$	LTR	Pao	Global_Bel_Pao_to_Pao
+# ----- Block F: DT* nomenclature in Global (HiTE / MTEC also use it) -----
+Global	(?i)^DNA/DTA$	DNA	hAT	Global_DTA_to_hAT
+Global	(?i)^DNA/DTC$	DNA	CMC	Global_DTC_to_CMC_parent
+Global	(?i)^DNA/DTH$	DNA	PIF-Harbinger	Global_DTH_to_Harbinger
+Global	(?i)^DNA/DTM$	DNA	MULE	Global_DTM_to_MULE_parent
+Global	(?i)^DNA/DTT$	DNA	TcMar	Global_DTT_to_TcMar
+Global	(?i)^MITE/DTA$	DNA	hAT	Global_MITE_DTA_to_hAT
+Global	(?i)^MITE/DTC$	DNA	CMC	Global_MITE_DTC_to_CMC_parent
+Global	(?i)^MITE/DTH$	DNA	PIF-Harbinger	Global_MITE_DTH_to_Harbinger
+Global	(?i)^MITE/DTM$	DNA	MULE	Global_MITE_DTM_to_MULE_parent
+Global	(?i)^MITE/DTT$	DNA	TcMar	Global_MITE_DTT_to_TcMar
+
+# ----- Block G: riceTElib special prefixes -----
+Global	(?i)^DNAnona/Helitron$	RC	Helitron	Global_DNAnona_Helitron_to_RC
+Global	(?i)^DNAauto/Helitron$	RC	Helitron	Global_DNAauto_Helitron_to_RC
+Global	(?i)^DNAnona/MULE.*	DNA	MULE	Global_DNAnona_MULE_to_MULE_parent
+Global	(?i)^DNAauto/MULE.*	DNA	MULE	Global_DNAauto_MULE_to_MULE_parent
+Global	(?i)^DNAnona/hAT$	DNA	hAT	Global_DNAnona_hAT
+Global	(?i)^DNAauto/hAT$	DNA	hAT	Global_DNAauto_hAT
+Global	(?i)^DNAnona/CACTA$	DNA	CMC	Global_DNAnona_CACTA_to_CMC_parent
+Global	(?i)^DNAauto/CACTA$	DNA	CMC	Global_DNAauto_CACTA_to_CMC_parent
+Global	(?i)^DNAnona/CACTG$	DNA	CMC	Global_DNAnona_CACTG_to_CMC_parent
+Global	(?i)^DNAauto/CACTG$	DNA	CMC	Global_DNAauto_CACTG_to_CMC_parent
+Global	(?i)^DNAnona/Tourist$	DNA	PIF-Harbinger	Global_DNAnona_Tourist
+Global	(?i)^DNAnona/MLE$	DNA	TcMar	Global_DNAnona_MLE
+Global	(?i)^DNAauto/MLE$	DNA	TcMar	Global_DNAauto_MLE
+Global	(?i)^DNAnona/PILE$	DNA	Unknown	Global_DNAnona_PILE_unknown
+Global	(?i)^DNAauto/PILE$	DNA	Unknown	Global_DNAauto_PILE_unknown
+Global	(?i)^DNAnona/POLE$	DNA	Unknown	Global_DNAnona_POLE_unknown
+Global	(?i)^DNAauto/POLE$	DNA	Unknown	Global_DNAauto_POLE_unknown
+Global	(?i)^DNAnona/unknown$	DNA	Unknown	Global_DNAnona_unknown
+# v5.4: DNAauto/unknown was missing (only DNAnona had the rule). EDTA's
+# riceTElib aliases include both DNAauto/Unknown and DNAnona/Unknown.
+Global	(?i)^DNAauto/(unknown|Unknown)$	DNA	Unknown	Global_DNAauto_unknown_v54
+Global	(?i)^DNAnona/Unknown$	DNA	Unknown	Global_DNAnona_Unknown_caps_v54
+Global	(?i)^MITE/Tourist$	DNA	PIF-Harbinger	Global_MITE_Tourist
+Global	(?i)^MITE/Stow$	DNA	TcMar-Stowaway	Global_MITE_Stow_to_TcMar_Stowaway
+Global	(?i)^Evirus/ERTBV.*	LTR	Caulimovirus	Global_Evirus_ERTBV
+Global	(?i)^pararetrovirus(/(unknown|Unknown|NA|na))?$	LTR	Caulimovirus	Global_pararetrovirus_to_Caulimovirus_v54
+# v5.4: MITE/<superfamily> specific rules above the generic catch-all.
+# Without these, EDTA's MITE/hAT, MITE/MULE, MITE/CACTA etc. aliases were
+# shadowed by Global_MITE_generic_to_bare_DNA and lost their superfamily
+# information. Targets mirror the corresponding DNA/<sf> rules elsewhere.
+Global	(?i)^MITE/hAT$	DNA	hAT	Global_MITE_hAT_to_DNA_hAT_v54
+Global	(?i)^MITE/MULE(tir)?$	DNA	MULE	Global_MITE_MULE_to_MULE_parent_v54
+Global	(?i)^MITE/CACTA$	DNA	CMC	Global_MITE_CACTA_to_CMC_parent_v54
+Global	(?i)^MITE/CACTG$	DNA	CMC	Global_MITE_CACTG_to_CMC_parent_v54
+Global	(?i)^MITE/MLE$	DNA	TcMar	Global_MITE_MLE_to_TcMar_parent_v54
+# riceTElib MITE/<anything> generic -> bare DNA
+Global	(?i)^MITE/.*	DNA	Unknown	Global_MITE_generic_to_bare_DNA
+
+# ----- Block H: LTR specialty variants -----
+# LTR/CRM is a Gypsy clade in plants - keep as Gypsy
+Global	(?i)^LTR/CRM$	LTR	Gypsy	Global_LTR_CRM_to_Gypsy
+# LTR/TRIM is canonical in Dfam -> preserve
+Global	(?i)^LTR/TRIM$	LTR	TRIM	Global_LTR_TRIM_canonical
+# LTR/Solo and LTR/LARD are non-canonical structural classes -> bare LTR
+Global	(?i)^LTR/Solo$	LTR	Unknown	Global_LTR_Solo
+Global	(?i)^LTR/LARD$	LTR	Unknown	Global_LTR_LARD
+
+# ----- Block I: v5.3.3 Class-prefixed asymmetry mirrors -----
+# Old curated libraries (TAIR10, MCTE, UCSC) often write bare-clade names with
+# Class prefix (e.g. 'LINE/Tx1', 'DNA/Charlie'). Each pattern below has a
+# matching Repbase rule that canonicalizes the bare form; these mirrors do the
+# same for the Class-prefixed form. Source forms verified to NOT themselves be
+# Dfam canonical (so no parent-clade information loss).
+
+# LINE family (NOTE: LINE/RTE is Dfam parent canonical, NOT mirrored here)
+Global	(?i)^LINE/Tx1$	LINE	L1-Tx1	Global_LINE_Tx1_to_L1_Tx1
+Global	(?i)^LINE/HAL1$	LINE	L1	Global_LINE_HAL1_to_L1
+Global	(?i)^LINE/R4$	LINE	Dong-R4	Global_LINE_R4_to_Dong_R4
+Global	(?i)^LINE/Rex$	LINE	Rex-Babar	Global_LINE_Rex_to_Rex_Babar
+Global	(?i)^LINE/NeSL$	LINE	R2-NeSL	Global_LINE_NeSL_to_R2_NeSL
+Global	(?i)^LINE/Ambal$	LINE	CRE-Ambal	Global_LINE_Ambal_to_CRE_Ambal
+
+# PLE family (some old libs misclassified PLE elements under LINE/)
+Global	(?i)^LINE/Athena$	PLE	Athena	Global_LINE_Athena_to_PLE
+Global	(?i)^LINE/Naiad$	PLE	Naiad	Global_LINE_Naiad_to_PLE
+Global	(?i)^LINE/Chlamys$	PLE	Chlamys	Global_LINE_Chlamys_to_PLE
+Global	(?i)^LINE/Coprina$	PLE	Coprina	Global_LINE_Coprina_to_PLE
+Global	(?i)^LINE/Hydra$	PLE	Hydra	Global_LINE_Hydra_to_PLE
+Global	(?i)^LINE/Nematis$	PLE	Nematis	Global_LINE_Nematis_to_PLE
+Global	(?i)^LINE/Poseidon$	PLE	Poseidon	Global_LINE_Poseidon_to_PLE
+
+# LTR family
+Global	(?i)^LTR/MaLR$	LTR	ERVL-MaLR	Global_LTR_MaLR_to_ERVL_MaLR
+Global	(?i)^LTR/Lentivirus$	LTR	ERV-Lenti	Global_LTR_Lenti_to_ERV_Lenti
+Global	(?i)^LTR/SIRE$	LTR	Copia	Global_LTR_SIRE_to_Copia
+Global	(?i)^LTR/BEL$	LTR	Pao	Global_LTR_BEL_to_Pao
+
+# DNA family (well-known clade names from curated libraries)
+Global	(?i)^DNA/Charlie$	DNA	hAT-Charlie	Global_DNA_Charlie_to_hAT_Charlie
+Global	(?i)^DNA/Tigger$	DNA	TcMar-Tigger	Global_DNA_Tigger_to_TcMar_Tigger
+Global	(?i)^DNA/Stowaway$	DNA	TcMar-Stowaway	Global_DNA_Stowaway_to_TcMar_Stowaway
+Global	(?i)^DNA/Tc2$	DNA	TcMar-Tc2	Global_DNA_Tc2_to_TcMar_Tc2
+Global	(?i)^DNA/Fot1$	DNA	TcMar-Fot1	Global_DNA_Fot1_to_TcMar_Fot1
+Global	(?i)^DNA/EnSpm$	DNA	CMC	Global_DNA_EnSpm_no_dash_to_CMC_parent
+Global	(?i)^DNA/Transib$	DNA	CMC-Transib	Global_DNA_Transib_to_CMC_Transib
+Global	(?i)^DNA/Chapaev$	DNA	CMC-Chapaev	Global_DNA_Chapaev_to_CMC_Chapaev
+Global	(?i)^DNA/ISL2EU$	DNA	PIF-ISL2EU	Global_DNA_ISL2EU_to_PIF_ISL2EU
+Global	(?i)^DNA/Polinton$	DNA	Maverick	Global_DNA_Polinton_to_Maverick
+Global	(?i)^DNA/Casposon$	DNA	Casposons	Global_DNA_Casposon_to_Casposons
+
+Global	(?i)^LTR/Foamy$	LTR	ERV-Foamy	Global_LTR_Foamy_to_ERV_Foamy
+
+# ==============================================================================
+# v5.3.5: rare LINE clades mirror. TEsorter rolls these to LINE/Unknown
+# in its source block; without this Global mirror, HiTE/EDTA/RM2 emitting
+# the same string would leak through Section 4 as non-canonical LINE/<clade>.
+Global	(?i)^LINE/(Crack|Daphne|Hero|Ingi|Nimb|Outcast|RandI|Vingi|Kiri|Lodin)$	LINE	Unknown	Global_rare_LINE_clade_to_bare
+# v5.3.5: L2A/L2B parent rollup mirror. TEsorter rolls these to LINE/L2;
+# without the mirror, non-TEsorter sources keep LINE/L2A and the scorer's
+# _sf_compatible(L2, L2A) returns False (sibling-of-parent, not parent-
+# child), so the pair scores Fuzzy +1 instead of the deserved Perfect +3.
+Global	(?i)^LINE/L2[AB]$	LINE	L2	Global_LINE_L2AB_to_L2_parent
+
+# ==============================================================================
+# v5.4 BLOCK J: TIR/<superfamily> Global mirrors of TEsorter source-specific rules
+# ------------------------------------------------------------------------------
+# EDTA's TE_Sequence_Ontology.txt lists TIR/<sf> aliases (TIR/hAT,
+# TIR/PIF_Harbinger, TIR/EnSpm_CACTA, TIR/Tc1_Mariner, TIR/MuDR_Mutator,
+# TIR/PiggyBac, TIR/Merlin, TIR/P, TIR/Kolobok, TIR/Ginger, TIR/Maverick,
+# TIR/Transib, TIR/Sola1/2/3, TIR/MULE, TIR/CMC, TIR/Novosib, TIR/Zator,
+# TIR/Academ, TIR/PILE, TIR/POLE). These previously fell to
+# Direct_Pass_Through and emitted non-canonical ('TIR', '<sf>') pairs.
+# TIR is not a Dfam Class - it's the Wicker Order for DNA transposons -
+# so the canonical mapping is DNA/<sf>. Each rule mirrors the equivalent
+# TEsorter source-specific rule and FIX 3 (parent rollups for CMC/MULE).
+# Order matters: longer / underscore-bearing patterns first to avoid
+# being shadowed by Direct_Pass_Through and Section 3 fallbacks.
+# ==============================================================================
+Global	(?i)^TIR/EnSpm_CACTA$	DNA	CMC	Global_TIR_EnSpm_CACTA_to_CMC_parent
+Global	(?i)^TIR/PIF_Harbinger$	DNA	PIF-Harbinger	Global_TIR_PIF_Harbinger_to_DNA
+Global	(?i)^TIR/MuDR_Mutator$	DNA	MULE	Global_TIR_MuDR_Mutator_to_MULE_parent
+Global	(?i)^TIR/Tc1_[Mm]ariner$	DNA	TcMar	Global_TIR_Tc1_Mariner_to_TcMar_parent
+Global	(?i)^TIR/hAT$	DNA	hAT	Global_TIR_hAT_to_DNA
+Global	(?i)^TIR/PiggyBac$	DNA	PiggyBac	Global_TIR_PiggyBac_to_DNA
+Global	(?i)^TIR/Merlin$	DNA	Merlin	Global_TIR_Merlin_to_DNA
+Global	(?i)^TIR/P$	DNA	P	Global_TIR_P_to_DNA
+Global	(?i)^TIR/Kolobok$	DNA	Kolobok	Global_TIR_Kolobok_to_DNA
+Global	(?i)^TIR/Ginger$	DNA	Ginger	Global_TIR_Ginger_to_DNA
+Global	(?i)^TIR/Ginger[-_]?[12]$	DNA	Ginger	Global_TIR_Ginger12_to_DNA_Ginger
+Global	(?i)^TIR/Maverick$	DNA	Maverick	Global_TIR_Maverick_to_DNA
+Global	(?i)^TIR/Transib$	DNA	CMC-Transib	Global_TIR_Transib_to_CMC_Transib
+Global	(?i)^TIR/Sola1$	DNA	Sola-1	Global_TIR_Sola1_to_Sola_1
+Global	(?i)^TIR/Sola2$	DNA	Sola-2	Global_TIR_Sola2_to_Sola_2
+Global	(?i)^TIR/Sola3$	DNA	Sola-3	Global_TIR_Sola3_to_Sola_3
+Global	(?i)^TIR/MULE$	DNA	MULE	Global_TIR_MULE_to_MULE_parent
+Global	(?i)^TIR/CMC$	DNA	CMC	Global_TIR_CMC_to_CMC_parent
+Global	(?i)^TIR/Novosib$	DNA	Novosib	Global_TIR_Novosib_to_DNA
+Global	(?i)^TIR/Zator$	DNA	Zator	Global_TIR_Zator_to_DNA
+Global	(?i)^TIR/Academ$	DNA	Unknown	Global_TIR_Academ_to_DNA_bare
+# tvBac is an obscure Kolobok-like name in EDTA's SO list (Kolobok alias);
+# fold into DNA/Kolobok to stay symmetric with the rest of the TIR block.
+Global	(?i)^TIR/tvBac$	DNA	Kolobok	Global_TIR_tvBac_to_Kolobok
+# PILE / POLE are EDTA-internal structural codes with no Dfam superfamily
+# (cf. existing Global rules for DNAauto/PILE etc.). Bare DNA.
+Global	(?i)^TIR/PILE$	DNA	Unknown	Global_TIR_PILE_to_DNA_bare
+Global	(?i)^TIR/POLE$	DNA	Unknown	Global_TIR_POLE_to_DNA_bare
+# Generic TIR/<anything-else> -> bare DNA (preserves Class info, drops the
+# unrecognized superfamily). This catch-all MUST come after the specific
+# TIR rules above.
+Global	(?i)^TIR/.+$	DNA	Unknown	Global_TIR_generic_to_DNA_bare
+# Bare 'TIR' (no slash) -> bare DNA
+Global	(?i)^TIR$	DNA	Unknown	Global_TIR_bare_to_DNA
+
+# ==============================================================================
+# v5.4 BLOCK K: EDTA Sequence Ontology canonical long names
+# ------------------------------------------------------------------------------
+# EDTA's .TElib.fa fasta headers and GFF type-attributes use the SO canonical
+# names (column 1 of TE_Sequence_Ontology.txt) rather than the path-style
+# aliases. Examples (verified from TE_Sequence_Ontology.txt):
+#   Copia_LTR_retrotransposon       SO:0002264
+#   Gypsy_LTR_retrotransposon       SO:0002265
+#   Bel_Pao_LTR_retrotransposon     SO:0002266
+#   Endogenous_Retrovirus_LTR_retrotransposon SO:0002268
+#   Retrovirus_LTR_retrotransposon  SO:0002267
+#   LTR_retrotransposon             SO:0000186
+#   L1_LINE_retrotransposon         SO:0002272
+#   I_LINE_retrotransposon          SO:0002273
+#   R2_LINE_retrotransposon         SO:0002269
+#   RTE_LINE_retrotransposon        SO:0002270
+#   Jockey_LINE_retrotransposon     SO:0002271
+#   CR1_LINE_retrotransposon, CRE_LINE_retrotransposon, L2_LINE_retrotransposon,
+#   R1_LINE_retrotransposon, R4_LINE_retrotransposon, Tad1_LINE_retrotransposon,
+#   Crack_LINE_retrotransposon, Vingi_LINE_retrotransposon,
+#   Tx1_LINE_retrotransposon, Rex_LINE_retrotransposon, Proto2_LINE_retrotransposon,
+#   Deceiver_LINE_retrotransposon, Inkcap_LINE_retrotransposon
+#   LINE_element                    SO:0000194
+#   Alu_SINE_retrotransposon, B2_SINE_retrotransposon, B4_SINE_retrotransposon,
+#   ID_SINE_retrotransposon, MIR_SINE_retrotransposon,
+#   tRNA_SINE_retrotransposon, 5S_SINE_retrotransposon, 7SL_SINE_retrotransposon
+#   SINE_element                    SO:0000206
+#   non_LTR_retrotransposon         SO:0000189
+#   <Family>_TIR_transposon         SO:0000182 (Sola, PILE, POLE, Ginger,
+#                                    Kolobok, Dada, IS3EU, Zator, KDZ)
+#   CACTA_TIR_transposon, hAT_TIR_transposon, Mutator_TIR_transposon,
+#   PIF_Harbinger_TIR_transposon, Tc1_Mariner_TIR_transposon, P_TIR_transposon,
+#   piggyBac_TIR_transposon, Transib_TIR_transposon, Merlin_TIR_transposon
+#   ERTBV_retrotransposon, pararetrovirus, polinton, helitron,
+#   Crypton_YR_transposon, DIRS_YR_retrotransposon, Ngaro_YR_retrotransposon,
+#   Viper_YR_retrotransposon, Penelope_retrotransposon
+# These rules emit a Dfam-canonical (Class, Subtype) pair when the
+# superfamily prefix is recognised, or a bare Class with Unknown subtype
+# when the prefix has no Dfam canonical (e.g. PILE, KDZ).
+# ==============================================================================
+# LTR Class
+Global	(?i)^Copia_LTR_retrotransposon$	LTR	Copia	Global_SO_Copia_LTR_long_name
+Global	(?i)^Gypsy_LTR_retrotransposon$	LTR	Gypsy	Global_SO_Gypsy_LTR_long_name
+Global	(?i)^Bel[-_]Pao_LTR_retrotransposon$	LTR	Pao	Global_SO_BelPao_LTR_long_name
+Global	(?i)^Retrovirus_LTR_retrotransposon$	LTR	ERV	Global_SO_Retrovirus_LTR_long_name
+Global	(?i)^Endogenous_Retrovirus_LTR_retrotransposon$	LTR	ERV	Global_SO_ERV_LTR_long_name
+Global	(?i)^ERTBV_retrotransposon$	LTR	Caulimovirus	Global_SO_ERTBV_long_name
+Global	(?i)^LTR_retrotransposon$	LTR	Unknown	Global_SO_LTR_retrotransposon_bare
+# LINE Class
+Global	(?i)^L1_LINE_retrotransposon$	LINE	L1	Global_SO_L1_LINE_long_name
+Global	(?i)^L2_LINE_retrotransposon$	LINE	L2	Global_SO_L2_LINE_long_name
+Global	(?i)^I_LINE_retrotransposon$	LINE	I	Global_SO_I_LINE_long_name
+Global	(?i)^R1_LINE_retrotransposon$	LINE	R1	Global_SO_R1_LINE_long_name
+Global	(?i)^R2_LINE_retrotransposon$	LINE	R2	Global_SO_R2_LINE_long_name
+Global	(?i)^R4_LINE_retrotransposon$	LINE	Dong-R4	Global_SO_R4_LINE_long_name
+Global	(?i)^RTE_LINE_retrotransposon$	LINE	RTE	Global_SO_RTE_LINE_long_name
+Global	(?i)^Jockey_LINE_retrotransposon$	LINE	I-Jockey	Global_SO_Jockey_LINE_long_name
+Global	(?i)^I-Jockey_LINE_retrotransposon$	LINE	I-Jockey	Global_SO_I_Jockey_LINE_long_name
+Global	(?i)^CR1_LINE_retrotransposon$	LINE	CR1	Global_SO_CR1_LINE_long_name
+Global	(?i)^CRE_LINE_retrotransposon$	LINE	CRE	Global_SO_CRE_LINE_long_name
+Global	(?i)^Tad1_LINE_retrotransposon$	LINE	Tad1	Global_SO_Tad1_LINE_long_name
+Global	(?i)^Tx1_LINE_retrotransposon$	LINE	L1-Tx1	Global_SO_Tx1_LINE_long_name
+Global	(?i)^Rex_LINE_retrotransposon$	LINE	Rex-Babar	Global_SO_Rex_LINE_long_name
+Global	(?i)^Proto2_LINE_retrotransposon$	LINE	Proto2	Global_SO_Proto2_LINE_long_name
+Global	(?i)^Crack_LINE_retrotransposon$	LINE	Unknown	Global_SO_Crack_LINE_long_name
+Global	(?i)^Vingi_LINE_retrotransposon$	LINE	Unknown	Global_SO_Vingi_LINE_long_name
+Global	(?i)^Deceiver_LINE_retrotransposon$	LINE	Deceiver	Global_SO_Deceiver_LINE_long_name
+Global	(?i)^Inkcap_LINE_retrotransposon$	LINE	Unknown	Global_SO_Inkcap_LINE_long_name
+Global	(?i)^LINE_element$	LINE	Unknown	Global_SO_LINE_element_bare
+Global	(?i)^non_LTR_retrotransposon$	LINE	Unknown	Global_SO_non_LTR_retrotransposon_to_LINE_bare
+# SINE Class
+Global	(?i)^Alu_SINE_retrotransposon$	SINE	Alu	Global_SO_Alu_SINE_long_name
+Global	(?i)^B2_SINE_retrotransposon$	SINE	B2	Global_SO_B2_SINE_long_name
+Global	(?i)^B4_SINE_retrotransposon$	SINE	B4	Global_SO_B4_SINE_long_name
+Global	(?i)^ID_SINE_retrotransposon$	SINE	ID	Global_SO_ID_SINE_long_name
+Global	(?i)^MIR_SINE_retrotransposon$	SINE	MIR	Global_SO_MIR_SINE_long_name
+Global	(?i)^tRNA_SINE_retrotransposon$	SINE	tRNA	Global_SO_tRNA_SINE_long_name
+Global	(?i)^5S_SINE_retrotransposon$	SINE	5S	Global_SO_5S_SINE_long_name
+Global	(?i)^7SL_SINE_retrotransposon$	SINE	7SL	Global_SO_7SL_SINE_long_name
+Global	(?i)^SINE_element$	SINE	Unknown	Global_SO_SINE_element_bare
+# TIR / DNA Class
+Global	(?i)^hAT_TIR_transposon$	DNA	hAT	Global_SO_hAT_TIR_long_name
+Global	(?i)^CACTA_TIR_transposon$	DNA	CMC	Global_SO_CACTA_TIR_long_name
+Global	(?i)^Mutator_TIR_transposon$	DNA	MULE	Global_SO_Mutator_TIR_long_name
+Global	(?i)^PIF_Harbinger_TIR_transposon$	DNA	PIF-Harbinger	Global_SO_PIFHarbinger_TIR_long_name
+Global	(?i)^Tc1_Mariner_TIR_transposon$	DNA	TcMar	Global_SO_Tc1Mariner_TIR_long_name
+Global	(?i)^P_TIR_transposon$	DNA	P	Global_SO_P_TIR_long_name
+Global	(?i)^piggyBac_TIR_transposon$	DNA	PiggyBac	Global_SO_piggyBac_TIR_long_name
+Global	(?i)^Transib_TIR_transposon$	DNA	CMC-Transib	Global_SO_Transib_TIR_long_name
+Global	(?i)^Merlin_TIR_transposon$	DNA	Merlin	Global_SO_Merlin_TIR_long_name
+Global	(?i)^Sola_TIR_transposon$	DNA	Unknown	Global_SO_Sola_TIR_long_name_to_bare
+Global	(?i)^Ginger_TIR_transposon$	DNA	Ginger	Global_SO_Ginger_TIR_long_name
+Global	(?i)^Kolobok_TIR_transposon$	DNA	Kolobok	Global_SO_Kolobok_TIR_long_name
+Global	(?i)^Dada_TIR_transposon$	DNA	Dada	Global_SO_Dada_TIR_long_name
+Global	(?i)^IS3EU_TIR_transposon$	DNA	IS3EU	Global_SO_IS3EU_TIR_long_name
+Global	(?i)^Zator_TIR_transposon$	DNA	Zator	Global_SO_Zator_TIR_long_name
+Global	(?i)^KDZ_TIR_transposon$	DNA	Unknown	Global_SO_KDZ_TIR_long_name_to_bare
+Global	(?i)^PILE_TIR_transposon$	DNA	Unknown	Global_SO_PILE_TIR_long_name_to_bare
+Global	(?i)^POLE_TIR_transposon$	DNA	Unknown	Global_SO_POLE_TIR_long_name_to_bare
+Global	(?i)^terminal_inverted_repeat_element$	DNA	Unknown	Global_SO_TIR_element_bare
+# YR transposons (Crypton, DIRS, Ngaro, Viper)
+Global	(?i)^Crypton_YR_transposon$	DNA	Crypton	Global_SO_Crypton_YR_long_name
+Global	(?i)^DIRS_YR_retrotransposon$	LTR	DIRS	Global_SO_DIRS_YR_long_name
+Global	(?i)^Ngaro_YR_retrotransposon$	LTR	Ngaro	Global_SO_Ngaro_YR_long_name
+Global	(?i)^Viper_YR_retrotransposon$	LTR	Viper	Global_SO_Viper_YR_long_name
+Global	(?i)^YR_retrotransposon$	LTR	Unknown	Global_SO_YR_bare
+# PLE / Penelope
+Global	(?i)^Penelope_retrotransposon$	PLE	Unknown	Global_SO_Penelope_long_name
+# RC Class
+Global	(?i)^helitron$	RC	Helitron	Global_SO_helitron_lowercase
+Global	(?i)^polinton$	DNA	Maverick	Global_SO_polinton_lowercase
+# Top-level Class long forms
+Global	(?i)^retrotransposon$	Unknown	Unknown	Global_SO_retrotransposon_top_bare
+Global	(?i)^DNA_transposon$	DNA	Unknown	Global_SO_DNA_transposon_top_to_DNA_bare
+Global	(?i)^repeat_region$	Unknown	Unknown	Global_SO_repeat_region_top
+Global	(?i)^repeat_fragment$	Unknown	Unknown	Global_SO_repeat_fragment_top
+
+# ----- v5.4 Block K (continued): non-TE chromosomal feature SO long names -----
+# rRNA / rDNA long-form SO names (from TE_Sequence_Ontology.txt). All collapse
+# to rRNA/Unknown (Dfam canonical top-level Class). The existing Block A
+# 'rDNA/.*' rule already handles the path-style aliases; these rules add the
+# SO canonical underscore-form bare names that fell to the catch-all.
+Global	(?i)^rRNA_gene$	rRNA	Unknown	Global_SO_rRNA_gene_top
+Global	(?i)^rRNA_5_external_transcribed_sequence$	rRNA	Unknown	Global_SO_rRNA_5_ETS_long
+Global	(?i)^rRNA_3_external_transcribed_sequence$	rRNA	Unknown	Global_SO_rRNA_3_ETS_long
+Global	(?i)^rRNA_internal_transcribed_spacer[12]$	rRNA	Unknown	Global_SO_rRNA_ITS_long
+Global	(?i)^rDNA(_intergenic_spacer_element)?$	rRNA	Unknown	Global_SO_rDNA_bare_or_IGS
+Global	(?i)^cytosolic_[0-9]+(_[0-9]+)?S_rRNA$	rRNA	Unknown	Global_SO_cytosolic_NS_rRNA_long
+Global	(?i)^[0-9]+(\.[0-9]+|_[0-9]+)?[Ss]_?rRNA(_gene)?$	rRNA	Unknown	Global_SO_NS_rRNA_compact
+
+# Centromere / satellite / telomere / knob SO long names. The existing Block A
+# rules cover path-style aliases (Cent/<x>, knob/<x>, ...); these add the SO
+# canonical bare-name forms that fell through.
+Global	(?i)^centromeric_repeat$	Satellite	centromeric	Global_SO_centromeric_repeat_bare
+Global	(?i)^centromere$	Satellite	centromeric	Global_SO_centromere_bare
+Global	(?i)^Cent(C|M)?$	Satellite	centromeric	Global_SO_Cent_bare_to_centromeric
+Global	(?i)^knob$	Satellite	Unknown	Global_SO_knob_bare_to_Satellite
+Global	(?i)^subtelomere$	Satellite	subtelomeric	Global_SO_subtelomere_bare
+Global	(?i)^telomeric_repeat$	Satellite	Unknown	Global_SO_telomeric_repeat_bare
+Global	(?i)^telomeric$	Satellite	Unknown	Global_SO_telomeric_bare
+Global	(?i)^satellite_DNA$	Satellite	Unknown	Global_SO_satellite_DNA_bare
+Global	(?i)^satellite$	Satellite	Unknown	Global_SO_satellite_bare_lower
+Global	(?i)^(mini|micro)satellite$	Satellite	Unknown	Global_SO_minimicrosatellite_bare
+Global	(?i)^Satellite/Satellite$	Satellite	Unknown	Global_SO_Satellite_Satellite_path
+Global	(?i)^Satellite/Y[-_]?chromosome$	Satellite	Y-chromosome	Global_SO_Satellite_Y_chromosome_path
+Global	(?i)^Satellite/W[-_]?chromosome$	Satellite	W-chromosome	Global_SO_Satellite_W_chromosome_path
+Global	(?i)^(SAT|MSAT)$	Satellite	Unknown	Global_SO_SAT_MSAT_bare
+
+# Low complexity / simple repeat SO long names
+Global	(?i)^low_complexity(_region)?$	Low_complexity	Unknown	Global_SO_low_complexity_bare
+Global	(?i)^Simple_repeat/NA$	Simple_repeat	Unknown	Global_SO_Simple_repeat_NA_path
+
+# Organelle DNA - no Dfam canonical for these; preserve as Unknown/Unknown.
+# (Dfam classification tree does not enumerate organelle DNA; downstream
+# RepeatMasker .out preserves the original annotation in the .out file
+# regardless.)
+Global	(?i)^chloroplast_DNA$	Unknown	Unknown	Global_SO_chloroplast_DNA_bare
+Global	(?i)^chloroplast/chloroplast$	Unknown	Unknown	Global_SO_chloroplast_path
+Global	(?i)^mitochondrial_DNA$	Unknown	Unknown	Global_SO_mitochondrial_DNA_bare
+Global	(?i)^mitochondrion/mitochondrion$	Unknown	Unknown	Global_SO_mitochondrion_path
+
+# DNAvirus / Evirus prefixes for ERTBV (EDTA Sequence Ontology). Equivalent
+# to LTR/Caulimovirus per existing Evirus/ERTBV rule and v5.4 pararetrovirus
+# mirror.
+Global	(?i)^DNAvirus/ERTBV.*	LTR	Caulimovirus	Global_DNAvirus_ERTBV_to_Caulimovirus_v54
+Global	(?i)^Evirus/(Unknown|unknown|NA|na)$	LTR	Caulimovirus	Global_Evirus_Unknown_to_Caulimovirus_v54
+
+# Wicker top-level Class names (EDTA SO list includes these as aliases for
+# the Dfam top-level Classes). Class_I = Retrotransposon = Unknown/Unknown
+# at the top level (no Subtype info to disambiguate). Class_II / DNA_transposon
+# already handled above.
+Global	(?i)^Class_I$	Unknown	Unknown	Global_SO_Class_I_top
+Global	(?i)^Class_II$	Unknown	Unknown	Global_SO_Class_II_top
+Global	(?i)^RNA_transposon$	Unknown	Unknown	Global_SO_RNA_transposon_top
+Global	(?i)^Retroposon/L1_dep$	Retroposon	L1-dep	Global_SO_Retroposon_L1_dep_path
+
+# Bare / NA / Unknown variants that fell through Direct_Pass_Through with
+# lowercase or NA-style placeholders. All collapse to Unknown/Unknown.
+Global	(?i)^unknown/unknown$	Unknown	Unknown	Global_unknown_path_to_Unknown
+Global	(?i)^NA/NA$	Unknown	Unknown	Global_NA_path_to_Unknown
+Global	(?i)^Unknown/(NA|na|unknown|Unknown)$	Unknown	Unknown	Global_Unknown_NA_variants
+Global	(?i)^unknown/NA$	Unknown	Unknown	Global_unknown_NA_path
+Global	(?i)^Unspecified$	Unknown	Unknown	Global_Unspecified_bare
+Global	(?i)^repeat/(unknown|Unknown)$	Unknown	Unknown	Global_repeat_unknown_path
+
+# Question-mark-suffix variants (EDTA SO list includes "LINE/CR1?", "LINE/Tad1?",
+# "DNA/MuLE_NOF?", "DNA/hAT_Tip100?", "LTR/Copia?", "LTR/Gypsy?"). Strip the '?'
+# and route to canonical. v5.3.5 Block C handled only the bare-class question
+# marks; these are the subtype-question-mark mirrors.
+Global	(?i)^LTR/Copia\?$	LTR	Copia	Global_LTR_Copia_question_to_Copia
+Global	(?i)^LTR/Gypsy\?$	LTR	Gypsy	Global_LTR_Gypsy_question_to_Gypsy
+Global	(?i)^LINE/CR1\?$	LINE	CR1	Global_LINE_CR1_question_to_CR1
+Global	(?i)^LINE/Tad1\?$	LINE	Tad1	Global_LINE_Tad1_question_to_Tad1
+Global	(?i)^LINE/L1\?$	LINE	L1	Global_LINE_L1_question_to_L1
+Global	(?i)^DNA/hAT_Tip100\?$	DNA	hAT-Tip100	Global_DNA_hAT_Tip100_question
+Global	(?i)^DNA/Tip100\?$	DNA	hAT-Tip100	Global_DNA_Tip100_question
+Global	(?i)^DNA/MuLE_NOF\?$	DNA	MULE-NOF	Global_DNA_MuLE_NOF_question
+Global	(?i)^DNA/Kolobok\?$	DNA	Kolobok	Global_DNA_Kolobok_question
+
+# EDTA-style numeric variant Ginger (Ginger1 / Ginger2 without dash already
+# covered by Repbase ^Ginger-?1.*; this adds the Class-prefixed path form).
+Global	(?i)^DNA/Ginger1$	DNA	Ginger-1	Global_DNA_Ginger1_no_dash_to_Ginger_1
+Global	(?i)^DNA/Ginger2$	DNA	Ginger-2	Global_DNA_Ginger2_no_dash_to_Ginger_2
+
+# KDZ / Plavaka / Dileera / Kyakuja are obscure DNA transposon clade names
+# from KDZ-family literature. No Dfam canonical. Fold to bare DNA so
+# RepeatMasker .tbl treats them as classified.
+Global	(?i)^DNA/KDZ$	DNA	Unknown	Global_DNA_KDZ_to_bare
+Global	(?i)^DNA/Plavaka$	DNA	Unknown	Global_DNA_Plavaka_to_bare
+Global	(?i)^DNA/Dileera$	DNA	Unknown	Global_DNA_Dileera_to_bare
+Global	(?i)^DNA/Kyakuja$	DNA	Unknown	Global_DNA_Kyakuja_to_bare
+Global	(?i)^DNA/Sola$	DNA	Unknown	Global_DNA_Sola_bare_to_DNA_bare
+Global	(?i)^DNA/Sola[123]$	DNA	Unknown	Global_DNA_Sola_nodash_bare
+Global	(?i)^DNA/PILE$	DNA	Unknown	Global_DNA_PILE_path_to_bare
+Global	(?i)^DNA/POLE$	DNA	Unknown	Global_DNA_POLE_path_to_bare
+# DNA/Zisupton family - no Dfam canonical for hybrid; bare DNA
+Global	(?i)^DNA/Zisupton(-hAT)?(-hybrid)?$	DNA	Zisupton	Global_DNA_Zisupton_variants_to_Zisupton
+
+# LINE/Inkcap / LINE/Tad / LINE/L2-Hydra etc. obscure clades
+Global	(?i)^LINE/Inkcap(-like)?$	LINE	Unknown	Global_LINE_Inkcap_to_bare
+Global	(?i)^LINE/Tad$	LINE	Tad1	Global_LINE_Tad_to_Tad1
+Global	(?i)^LINE/L2-Hydra$	LINE	L2	Global_LINE_L2_Hydra_to_L2_parent
+Global	(?i)^LINE/Penelope-like$	PLE	Unknown	Global_LINE_Penelope_like_to_PLE
+
+# ==============================================================================
+# v5.4 BLOCK M: EDTA legacy path-form aliases (closing remaining gaps)
+# ------------------------------------------------------------------------------
+# EDTA's TE_Sequence_Ontology.txt enumerates a long tail of legacy aliases
+# (case variants, typos, EDTA internal DT* short codes, and synonym path-
+# forms) that fell through Direct_Pass_Through after Block J/K/L. Each rule
+# below maps a specific historical EDTA alias to its canonical (or
+# RepeatMasker-recognised) form.
+# ==============================================================================
+
+# ----- EDTA DT* shorthand without dedicated EDTA-specific rule -----
+# (DTA/DTC/DTH/DTM/DTT are covered by EDTA section; DTX/DTP/DTB/DTR/DTE
+# /DTM/DTS are documented in EDTA SO file but never got Global rules.)
+Global	(?i)^DNA/DTX$	DNA	Unknown	Global_DNA_DTX_to_bare_v54
+Global	(?i)^DNA/DTP$	DNA	P	Global_DNA_DTP_to_P_v54
+Global	(?i)^DNA/DTB$	DNA	PiggyBac	Global_DNA_DTB_to_PiggyBac_v54
+Global	(?i)^DNA/DTR$	DNA	CMC-Transib	Global_DNA_DTR_to_CMC_Transib_v54
+Global	(?i)^DNA/DTE$	DNA	Merlin	Global_DNA_DTE_to_Merlin_v54
+Global	(?i)^DNA/DYC$	DNA	Crypton	Global_DNA_DYC_to_Crypton_v54
+
+# ----- EDTA CACTG (a CACTA variant spelling) -----
+Global	(?i)^DNA/CACTG$	DNA	CMC	Global_DNA_CACTG_to_CMC_parent_v54
+
+# ----- EDTA Crypton case variants (CryptonA / CryptonI / etc. without dash) -----
+Global	(?i)^DNA/Crypton([ACFHISRVX])$	DNA	Crypton-\1	Global_DNA_Crypton_nodash_to_dash_v54
+
+# ----- EDTA Kolobok case variants without dash (Kolobok1, Kolobok2) -----
+# (Kolobok-H / -T2 / -Hydra / -E are handled by underscore-to-dash rule.)
+
+# ----- EDTA MuLE (lowercase u) -> MULE (canonical Dfam casing) -----
+Global	(?i)^DNA/MuLE-MuDR\??$	DNA	MULE-MuDR	Global_DNA_MuLE_MuDR_case_to_MULE_MuDR_v54
+Global	(?i)^DNA/MuLE-NOF\??$	DNA	MULE-NOF	Global_DNA_MuLE_NOF_case_to_MULE_NOF_v54
+Global	(?i)^DNA/MuLE-F$	DNA	MULE-F	Global_DNA_MuLE_F_case_to_MULE_F_v54
+Global	(?i)^DNA/MULEtir$	DNA	MULE	Global_DNA_MULEtir_to_MULE_parent_v54
+Global	(?i)^DNA/MULE-MuDR\?$	DNA	MULE-MuDR	Global_DNA_MULE_MuDR_question_v54
+
+# ----- EDTA hAT case/spelling variants -----
+Global	(?i)^DNA/piggyBac$	DNA	PiggyBac	Global_DNA_piggyBac_lowercase_to_PiggyBac_v54
+Global	(?i)^DNA/PiggyBacen$	DNA	PiggyBac	Global_DNA_PiggyBacen_typo_to_PiggyBac_v54
+
+# ----- Tc1/Mariner inversions: EDTA lists 'Tc1/Mariner' and 'Mariner/Tc1' -----
+# Per FIX 3 these stay at the TcMar parent (not the TcMar-Mariner or TcMar-Tc1
+# child) because no specific subclade info is present.
+Global	(?i)^Tc1/Mariner$	DNA	TcMar	Global_Tc1_Mariner_inversion_to_TcMar_v54
+Global	(?i)^Mariner/Tc1$	DNA	TcMar	Global_Mariner_Tc1_inversion_to_TcMar_v54
+Global	(?i)^DNA/Mariner-Tc1$	DNA	TcMar	Global_DNA_Mariner_Tc1_to_TcMar_v54
+Global	(?i)^DNA/MarinerTc1$	DNA	TcMar	Global_DNA_MarinerTc1_typo_to_TcMar_v54
+Global	(?i)^DNA/TcMareSL$	DNA	TcMar	Global_DNA_TcMareSL_typo_to_TcMar_v54
+Global	(?i)^DNA/MLE$	DNA	TcMar	Global_DNA_MLE_to_TcMar_v54
+
+# ----- EDTA SO 'Ac/Ds' alias (the famous maize hAT pair, name format inversion) -----
+Global	(?i)^Ac/Ds$	DNA	hAT-Ac	Global_Ac_Ds_inversion_to_hAT_Ac_v54
+
+# ----- EDTA SO 'PIF/Harbinger' inversion -----
+Global	(?i)^PIF/Harbinger$	DNA	PIF-Harbinger	Global_PIF_Harbinger_inversion_v54
+Global	(?i)^DNA/Tourist$	DNA	PIF-Harbinger	Global_DNA_Tourist_to_PIF_Harbinger_v54
+# Note: 'DNA/PIF' (bare, no child) is itself a Dfam canonical parent
+# (parent of PIF-Harbinger/PIF-HarbS/PIF-ISL2EU/PIF-Spy), so it passes
+# through via Section 4 unchanged.
+
+# ----- EDTA CMC typo variants (CMC-Chapaever, CMC-EnSpmo, CMC-Miragen, CMC-Transibway) -----
+# Map each to the closest Dfam canonical sibling.
+Global	(?i)^DNA/CMC-Chapaever$	DNA	CMC-Chapaev	Global_DNA_CMC_Chapaever_typo_v54
+Global	(?i)^DNA/CMC-EnSpmo$	DNA	CMC-EnSpm	Global_DNA_CMC_EnSpmo_typo_to_CMC_EnSpm_v54
+Global	(?i)^DNA/CMC-Miragen$	DNA	CMC-Mirage	Global_DNA_CMC_Miragen_typo_v54
+Global	(?i)^DNA/CMC-Transibway$	DNA	CMC-Transib	Global_DNA_CMC_Transibway_typo_v54
+Global	(?i)^DNA/EnSpm-CACTA$	DNA	CMC	Global_DNA_EnSpm_CACTA_to_CMC_parent_v54
+# (Note: 'DNA/EnSpm_CACTA' first hits the underscore-to-dash rule, which
+# converts it to 'DNA/EnSpm-CACTA'; the engine doesn't recurse, so we also
+# need the underscored-form rule explicitly.)
+Global	(?i)^DNA/EnSpm_CACTA$	DNA	CMC	Global_DNA_EnSpm_underscore_CACTA_to_CMC_parent_v54
+
+# ----- EDTA Merlin1 (no dash) -> Merlin parent -----
+Global	(?i)^DNA/Merlin1$	DNA	Merlin	Global_DNA_Merlin1_to_Merlin_parent_v54
+
+# ----- EDTA helitron variants -----
+Global	(?i)^Helitron/NA$	RC	Helitron	Global_Helitron_NA_to_RC_v54
+Global	(?i)^nonDNA/[Hh]elitron$	RC	Helitron	Global_nonDNA_Helitron_to_RC_v54
+Global	(?i)^Unknown/Helitron-2$	RC	Helitron-2	Global_Unknown_Helitron2_to_RC_v54
+
+# ----- EDTA hAT-Tip100? question variant (Block K already covers DNA/hAT_Tip100? via underscore rule;
+# this catches the dash-form input) -----
+Global	(?i)^DNA/hAT-Tip100\?$	DNA	hAT-Tip100	Global_DNA_hAT_Tip100_dash_question_v54
+# DNA/Mariner alone (legacy alias) -> TcMar-Mariner
+Global	(?i)^DNA/Mariner$	DNA	TcMar-Mariner	Global_DNA_Mariner_bare_to_TcMar_Mariner_v54
+
+# ----- terminal_inverted_repeat / DNA/DTX style top-level fragments -----
+Global	(?i)^terminal_inverted_repeat$	DNA	Unknown	Global_SO_TIR_word_to_DNA_bare_v54
+Global	(?i)^TIR/Unknown$	DNA	Unknown	Global_TIR_Unknown_to_DNA_bare_v54
+
+# ==============================================================================
+# v5.6 BLOCK N: cross-source audit fixes (RepLibBuilder dictionary review)
+# ------------------------------------------------------------------------------
+# Placed BEFORE Block L (underscore->dash) and Section 4 catch-alls so these
+# specific canonicalizations win over the generic transforms / pass-through.
+# Closes the 8 EDTA leak root-causes (P1-P8) from the cross-source audit; all
+# targets verified against Dfam TEClasses.tsv repeatmasker_type/subtype.
+# ==============================================================================
+
+# ----- P1+P2: non-canonical / underscore-spelled subtypes -> Dfam parent -----
+# (underscore forms previously bypassed canonicalizers via Block L)
+Global	(?i)^DNA/MuLE[-_]MuDR\??$	DNA	MULE-MuDR	Global_v56_MuLE_MuDR_to_MULE_MuDR_P1
+Global	(?i)^DNA/MuLE[-_]NOF\??$	DNA	MULE-NOF	Global_v56_MuLE_NOF_to_MULE_NOF_P1
+Global	(?i)^DNA/MuLE[-_]F$	DNA	MULE-F	Global_v56_MuLE_F_to_MULE_F_P1
+Global	(?i)^DNA/Zisupton.*$	DNA	Zisupton	Global_v56_Zisupton_any_to_parent_P1P2
+Global	(?i)^LINE/L2[-_]Hydra$	LINE	L2	Global_v56_L2_Hydra_to_L2_P1
+Global	(?i)^LINE/R2[-_]Dualen$	LINE	R2	Global_v56_R2_Dualen_to_R2_P2
+Global	(?i)^LINE/I[-_]Nimb$	LINE	I	Global_v56_I_Nimb_to_I_P2
+Global	(?i)^LTR/Gypsy[-_](Cigr|Troyka)$	LTR	Gypsy	Global_v56_Gypsy_clade_to_Gypsy_P1P2
+Global	(?i)^DNA/TcMar[-_]IS630$	DNA	TcMar	Global_v56_TcMar_IS630_to_TcMar_P2
+
+# ----- P2: non-canonical hAT children -> hAT parent (canonical hAT-* untouched) -----
+Global	(?i)^DNA/hAT[-_]AcTigger$	DNA	hAT	Global_v56_hAT_AcTigger_to_hAT_P2
+Global	(?i)^DNA/hAT[-_]Tag11$	DNA	hAT	Global_v56_hAT_Tag11_to_hAT_P2
+Global	(?i)^DNA/hAT[-_]Tol2$	DNA	hAT	Global_v56_hAT_Tol2_to_hAT_P2
+Global	(?i)^DNA/hAT-hATm-hAT[-_]hybrid$	DNA	hAT	Global_v56_hAT_hATm_hybrid_to_hAT_P2
+
+# ----- P6: DNA/Tc1-Mariner (dash, most common write-form) + underscore -> TcMar -----
+Global	(?i)^DNA/Tc1[-_]Mariner$	DNA	TcMar	Global_v56_DNA_Tc1_Mariner_to_TcMar_P6
+
+# ----- P3: Wicker codes WITH class prefix (mirror of existing nonLTR/* rules) -----
+Global	(?i)^LINE/RIL$	LINE	L1	Global_v56_LINE_RIL_to_L1_P3
+Global	(?i)^LINE/RII$	LINE	I	Global_v56_LINE_RII_to_I_P3
+Global	(?i)^LINE/RIJ$	LINE	I-Jockey	Global_v56_LINE_RIJ_to_I_Jockey_P3
+Global	(?i)^LINE/RIT$	LINE	RTE	Global_v56_LINE_RIT_to_RTE_P3
+Global	(?i)^LINE/RIR$	LINE	R2	Global_v56_LINE_RIR_to_R2_P3
+Global	(?i)^LINE/RTEX$	LINE	RTE-X	Global_v56_LINE_RTEX_to_RTE_X_P3
+Global	(?i)^SINE/RST$	SINE	tRNA	Global_v56_SINE_RST_to_tRNA_P3
+Global	(?i)^SINE/RSL$	SINE	7SL	Global_v56_SINE_RSL_to_7SL_P3
+Global	(?i)^SINE/RSS$	SINE	5S	Global_v56_SINE_RSS_to_5S_P3
+Global	(?i)^LTR/RLC$	LTR	Copia	Global_v56_LTR_RLC_to_Copia_P3
+Global	(?i)^LTR/RLG$	LTR	Gypsy	Global_v56_LTR_RLG_to_Gypsy_P3
+Global	(?i)^LTR/RLB$	LTR	Pao	Global_v56_LTR_RLB_to_Pao_P3
+Global	(?i)^LTR/RLE$	LTR	ERV	Global_v56_LTR_RLE_to_ERV_P3
+Global	(?i)^LTR/RLR$	LTR	ERV	Global_v56_LTR_RLR_to_ERV_P3
+
+# ----- P4: old LTR synonym / clade names with class prefix -----
+Global	(?i)^LTR/Ty1$	LTR	Copia	Global_v56_LTR_Ty1_to_Copia_P4
+Global	(?i)^LTR/Ty3$	LTR	Gypsy	Global_v56_LTR_Ty3_to_Gypsy_P4
+Global	(?i)^LTR/HERV$	LTR	ERV	Global_v56_LTR_HERV_to_ERV_P4
+Global	(?i)^LTR/Lenti$	LTR	ERV-Lenti	Global_v56_LTR_Lenti_to_ERV_Lenti_P4
+Global	(?i)^LTR/ERV-MaLR$	LTR	ERVL-MaLR	Global_v56_LTR_ERV_MaLR_to_ERVL_MaLR_P4
+Global	(?i)^LTR/ERV2$	LTR	ERVK	Global_v56_LTR_ERV2_to_ERVK_P4
+Global	(?i)^LTR/ERV3$	LTR	ERVL	Global_v56_LTR_ERV3_to_ERVL_P4
+
+# ----- P5: prefix-as-class fixes (Bel/, SINEn/, YR/) -----
+Global	(?i)^Bel/Pao$	LTR	Pao	Global_v56_Bel_Pao_inversion_to_Pao_P5
+Global	(?i)^SINE1/7SL$	SINE	7SL	Global_v56_SINE1_7SL_to_SINE_7SL_P5
+Global	(?i)^SINE2/tRNA$	SINE	tRNA	Global_v56_SINE2_tRNA_to_SINE_tRNA_P5
+Global	(?i)^SINE3/5S$	SINE	5S	Global_v56_SINE3_5S_to_SINE_5S_P5
+Global	(?i)^YR/(unknown|Unknown|NA|na)$	LTR	Unknown	Global_v56_YR_unknown_to_LTR_bare_P5
+
+# ----- P7: question-mark variants not stripped -----
+Global	(?i)^LTR/DIRS\?$	LTR	DIRS	Global_v56_LTR_DIRS_question_to_DIRS_P7
+Global	(?i)^SINE\?/.*$	SINE	Unknown	Global_v56_SINE_question_path_to_SINE_bare_P7
+
+# ----- P8: bare P-element / P_element long name -> DNA/P -----
+Global	(?i)^P[-_]element$	DNA	P	Global_v56_P_element_bare_to_DNA_P_P8
+
+# ==============================================================================
+# v5.4 BLOCK L: underscore -> dash for canonical TE Class subtypes
+# ------------------------------------------------------------------------------
+# EDTA's TE_Sequence_Ontology.txt lists aliases with underscores in Subtype
+# positions where Dfam canonical uses dashes:
+#   DNA/Kolobok_T2     -> DNA/Kolobok-T2     (Dfam canonical)
+#   DNA/hAT_Charlie    -> DNA/hAT-Charlie    (Dfam canonical)
+#   DNA/Tc1_Mariner    -> DNA/Tc1-Mariner    (RepeatMasker-recognisable)
+#   LINE/CR1_Zenon     -> LINE/CR1-Zenon     (Dfam canonical)
+#   LINE/RTE_BovB      -> LINE/RTE-BovB      (Dfam canonical)
+#   LTR/ERV_Foamy      -> LTR/ERV-Foamy      (Dfam canonical)
+#   SINE/5S_Deu_L2     -> SINE/5S-Deu-L2     (Dfam canonical, 2 underscores)
+#   SINE/tRNA_V_CR1    -> SINE/tRNA-V-CR1    (Dfam canonical, 2 underscores)
+# 89 EDTA aliases of this form previously fell through to
+# Direct_Pass_Through and emitted non-canonical pairs that RepeatMasker
+# .tbl would treat as Unclassified.
+#
+# Scope: limited to TE Classes (DNA, LINE, SINE, LTR, RC, PLE, Retroposon).
+# Excludes Low_complexity, Simple_repeat, Satellite (which legitimately
+# contain underscores), and Class names that have already been remapped
+# by Block A (rDNA, Cent, Centro, subtelomere, telo) earlier in this
+# Global section.
+#
+# Order: longest-pattern (2 underscores) before shortest (1 underscore)
+# so 'SINE/tRNA_V_CR1' is matched by the 2-underscore rule and not
+# truncated to ('SINE', 'tRNA-V_CR1') by the 1-underscore rule.
+# ==============================================================================
+Global	(?i)^(DNA|LINE|SINE|LTR|RC|PLE|Retroposon)/([A-Za-z0-9?-]+)_([A-Za-z0-9?-]+)_([A-Za-z0-9?-]+)$	\1	\2-\3-\4	Global_underscore_to_dash_2u
+Global	(?i)^(DNA|LINE|SINE|LTR|RC|PLE|Retroposon)/([A-Za-z0-9?-]+)_([A-Za-z0-9?-]+)$	\1	\2-\3	Global_underscore_to_dash_1u
+
+# 3. GLOBAL FALLBACKS (narrowed - canonical subfamilies must pass through)
+# ------------------------------------------------------------------------------
+# Only catches LITERAL "unknown" / "other" / etc. variants of class labels.
+# Any X/Y with a non-trivial Y goes to the Section 4 pass-through.
+# ==============================================================================
+Global	(?i)^LINE/(unknown|other|unclassified|mixed|unspecified|na|none|n/a)$	LINE	Unknown	Global_LINE_fallback
+Global	(?i)^SINE/(unknown|other|unclassified|mixed|unspecified|na|none|n/a)$	SINE	Unknown	Global_SINE_fallback
+Global	(?i)^DNA/(unknown|other|unclassified|mixed|unspecified|na|none|n/a)$	DNA	Unknown	Global_DNA_fallback
+Global	(?i)^LTR/(unknown|other|unclassified|mixed|unspecified|na|none|n/a)$	LTR	Unknown	Global_LTR_fallback
+# Bare MITE (no /Y) -> bare DNA
+Global	(?i)^MITE$	DNA	Unknown	Global_MITE_bare_to_DNA
+
+# ==============================================================================
+# 4. GLOBAL CATCH-ALLS (Lowest Priority - MUST BE AT THE BOTTOM)
+# ==============================================================================
+# Canonical X/Y labels (LINE/L1, DNA/hAT-Charlie, SINE/tRNA-Deu-L2, etc.)
+# reach this pass-through and survive unchanged.
+# --- EDTA YR/ DIRS-clade aliases -> canonical LTR/* ---
+Global	(?i)^YR/Ngaro$	LTR	Ngaro	Global_YR_Ngaro_to_LTR_Ngaro
+Global	(?i)^YR/Viper$	LTR	Viper	Global_YR_Viper_to_LTR_Viper
+Global	(?i)^YR/RYN$	LTR	Ngaro	Global_YR_RYN_to_LTR_Ngaro
+Global	(?i)^YR/RYV$	LTR	Viper	Global_YR_RYV_to_LTR_Viper
+Global	(?i)^YR/RYD$	LTR	DIRS	Global_YR_RYD_to_LTR_DIRS
+# --- v5.5: Class-prefix case normalization (defensive net). Rewrites a
+# canonical Class prefix to its exact Dfam casing while preserving the
+# subtype via backref. Sits immediately before Direct_Pass_Through so it
+# only affects labels not already caught by a specific rule. Correct-case
+# inputs map to themselves (no-op); mis-cased class prefixes get fixed. ---
+Global	(?i)^DNA/(.+)$	DNA	\1	Global_class_case_norm_DNA
+Global	(?i)^LINE/(.+)$	LINE	\1	Global_class_case_norm_LINE
+Global	(?i)^LTR/(.+)$	LTR	\1	Global_class_case_norm_LTR
+Global	(?i)^SINE/(.+)$	SINE	\1	Global_class_case_norm_SINE
+Global	(?i)^RC/(.+)$	RC	\1	Global_class_case_norm_RC
+Global	(?i)^PLE/(.+)$	PLE	\1	Global_class_case_norm_PLE
+Global	(?i)^RNA/(.+)$	RNA	\1	Global_class_case_norm_RNA
+Global	(?i)^Retroposon/(.+)$	Retroposon	\1	Global_class_case_norm_Retroposon
+Global	(?i)^Satellite/(.+)$	Satellite	\1	Global_class_case_norm_Satellite
+Global	(?i)^Low_complexity/(.+)$	Low_complexity	\1	Global_class_case_norm_Low_complexity
+Global	(?i)^Simple_repeat/(.+)$	Simple_repeat	\1	Global_class_case_norm_Simple_repeat
+Global	(?i)^Segmental/(.+)$	Segmental	\1	Global_class_case_norm_Segmental
+Global	(?i)^ARTEFACT/(.+)$	ARTEFACT	\1	Global_class_case_norm_ARTEFACT
+Global	(?i)^Other/(.+)$	Other	\1	Global_class_case_norm_Other
+Global	(?i)^rRNA/(.+)$	rRNA	\1	Global_class_case_norm_rRNA
+Global	(?i)^scRNA/(.+)$	scRNA	\1	Global_class_case_norm_scRNA
+Global	(?i)^snRNA/(.+)$	snRNA	\1	Global_class_case_norm_snRNA
+Global	(?i)^tRNA/(.+)$	tRNA	\1	Global_class_case_norm_tRNA
+Global	(?i)^Unknown/(.+)$	Unknown	\1	Global_class_case_norm_Unknown
+Global	(?i)^([^/]+)/([^/]+)$	\1	\2	Global_Direct_Pass_Through
+Global	(?i)^([^/]+)$	\1	Unknown	Global_No_Superfamily_Fallback

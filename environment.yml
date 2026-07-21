@@ -1,0 +1,13 @@
+name: RLB_env
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python>=3.10
+  - biopython>=1.80
+  - pyyaml
+  - numpy>=2.3.3
+  - h5py>=3.14.0
+  - tesorter>=1.5.1
+  - cd-hit>=4.8.1

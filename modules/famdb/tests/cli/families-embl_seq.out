@@ -1,0 +1,10 @@
+CC   <copyright header>
+ID   TEST0003; SV 1; linear; DNA; STD; UNC; 4 BP.
+NM   Test family TEST0003
+XX
+AC   TEST0003;
+XX
+XX
+SQ   Sequence 4 BP; 0 A; 1 C; 2 G; 1 T; 0 other;
+     ggtc                                                               4
+//

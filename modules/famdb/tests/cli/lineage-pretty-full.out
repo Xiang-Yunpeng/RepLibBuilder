@@ -1,0 +1,7 @@
+1 root(0) [1]
+├─2 Order(0) [1]
+│ ├─4 Genus(1) [1]
+│ │ └─6 Species(1) [1]
+│ └─5 Other Genus(2) [0]
+│   └─7 Other Species(2) [1]
+└─3 Other Order(0) [2]

@@ -1,11 +1,18 @@
-# RepLibBuilder
+<p align="center">
+  <img src="docs/img/RLB_logo.png" alt="RepLibBuilder logo" width="150">
+</p>
 
-**Automated construction, evaluation, and refinement of species-specific repeat libraries.**
+<h1 align="center">RepLibBuilder</h1>
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21473020.svg)](https://doi.org/10.5281/zenodo.21473020)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+<p align="center">
+  <b>Automated construction, evaluation, and refinement of species-specific repeat libraries.</b>
+</p>
 
-`v1.0.0`
+<p align="center">
+  <a href="https://doi.org/10.5281/zenodo.21473020"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.21473020.svg" alt="DOI"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a>
+  <img src="https://img.shields.io/badge/version-v1.0.0-blue.svg" alt="Version v1.0.0">
+</p>
 
 RepLibBuilder (RLB) is a two-step bioinformatics pipeline that rescues, standardizes,
 diagnoses, and condenses transposable element (TE) libraries. It merges public databases
@@ -61,6 +68,24 @@ comparative/evolutionary analysis.
 ---
 
 ## How it works
+
+<p align="center">
+  <img src="docs/img/RLB_workflow.png" alt="RepLibBuilder workflow — Step 1 evaluate/standardize and Step 2 build" width="900">
+</p>
+
+<p align="center">
+  <sub>
+    <b>The RepLibBuilder workflow.</b>
+    <b>Step 1 &middot; <code>evaluate</code></b> — public databases <b>(a)</b> and <i>de novo</i>
+    libraries <b>(b)</b> are header-normalized <b>(c)</b> through a shared TE-label mapping
+    dictionary, carried as separate public <b>(d)</b> and <i>de novo</i> <b>(e)</b> tracks, then
+    merged <b>(f)</b> into a raw TE library. A self-contained interactive HTML report acts as a
+    human review gate <b>(g)</b>.
+    <b>Step 2 &middot; <code>build</code></b> — the raw library is filtered by diagnostic tag,
+    database &amp; class, and length <b>(h)</b>, then stratified-clustered across the eight TE
+    superfamilies <b>(i)</b> to yield the final, non-redundant library <b>(j)</b>.
+  </sub>
+</p>
 
 RepLibBuilder is driven by a single script with **one required subcommand**:
 

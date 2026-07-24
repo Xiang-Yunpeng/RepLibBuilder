@@ -458,19 +458,26 @@ you pass `--repbase` / `--dfam_db` they must be set up as described here.
   partition set**. You supply your species' `--tax_id` (NCBI Taxonomy ID) and RepLibBuilder pulls
   the matching lineage from that database — but the FamDB directory itself must be configured by
   you.
-- **How to obtain it.** Dfam is open access. Download the FamDB partition files for your clade from
-  the Dfam release area (<https://www.dfam.org/releases/current/families/FamDB/>):
-  - the **root partition `*.0.h5` is mandatory** (it holds the taxonomy);
-  - plus the leaf partition(s) covering your taxa (each Dfam release lists which partition number
-    covers which clade);
+- **How to obtain it.** Dfam is open access, but you must download a **FamDB format-2.x** release —
+  currently **Dfam 3.9** is the newest one RepLibBuilder can read
+  (<https://www.dfam.org/releases/Dfam_3.9/families/FamDB/>). **Do not use the `/releases/current/`
+  alias — it now serves Dfam 4.0, which this version cannot read (see Compatibility below).** From
+  the Dfam 3.9 FamDB area, grab the partition files for your clade:
+  - the **root partition `dfam39_full.0.h5` is mandatory** (it holds the taxonomy);
+  - plus the leaf partition(s) `dfam39_full.N.h5` covering your taxa (N = 0..16; each Dfam release
+    documents which partition number covers which clade);
   - `gunzip` the downloaded `*.h5.gz` files and put them **all in one directory** — keep only a
     single Dfam export per directory.
 - **Point `--dfam_db` at that directory** (e.g. `--dfam_db /path/to/Dfam`) and pass `--tax_id`.
   RepLibBuilder calls the bundled `famdb` toolkit to extract the curated families for the ancestors
   and descendants of your taxon, converts them to FASTA, and drops Unknown-class entries.
-- **Compatibility.** The bundled `famdb` reads **FamDB format 2.x** databases — the current
-  partitioned Dfam releases (e.g. Dfam 3.9). A pre-partition monolithic `.h5` (old single-file
-  scheme) is **not** the expected input.
+- **Compatibility.** RepLibBuilder's bundled `famdb` reads **FamDB file-format version 2.x** — i.e.
+  Dfam releases in the **3.x** series (Dfam 3.9 = FamDB format 2.0.0). This is the database
+  **file-format** version, not the Dfam release number. **Dfam 4.0 (2026) is not supported**: it
+  moved to the new component-based **FamDB format 3.0.0** (`dfam40.*.h5`), which requires `famdb`
+  3.x — the bundled 2.0.5 refuses it with a version-mismatch error. (Supporting Dfam 4.0 would mean
+  upgrading the bundled `famdb`, a major-version change — not just a different download.) A very old
+  pre-partition monolithic single-file `.h5` is likewise not accepted.
 
 > **Why Dfam is the open default.** Modern RepeatMasker (4.x, FamDB era) ships with Dfam — an
 > openly licensed TE database — as the free alternative to the now-paywalled Repbase.

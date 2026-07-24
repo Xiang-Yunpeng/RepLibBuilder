@@ -438,10 +438,11 @@ you pass `--repbase` / `--dfam_db` they must be set up as described here.
 
 ### Repbase (`--repbase`)
 
-- **What to provide.** The **raw Repbase FASTA export** — the classic GIRI format with
-  tab-separated headers `Name<TAB>Classification<TAB>Species`, whose classification field uses
-  Repbase's own superfamily vocabulary (`Gypsy`, `Copia`, `hAT`, `Mariner/Tc1`, `EnSpm/CACTA`,
-  `SINE2/tRNA`, …). RepLibBuilder cleans, normalizes, and de-duplicates it.
+- **What to provide.** The **raw Repbase FASTA export** — the classic GIRI format whose header
+  lines carry three tab-separated fields (`Name`, `Classification`, `Species`), and whose
+  classification field uses Repbase's own superfamily vocabulary (`Gypsy`, `Copia`, `hAT`,
+  `Mariner/Tc1`, `EnSpm/CACTA`, `SINE2/tRNA`, …). RepLibBuilder cleans, normalizes, and
+  de-duplicates it.
 - **How to obtain it.** Since **12 April 2019**, Repbase is no longer freely downloadable — it
   requires a paid academic/individual subscription from GIRI
   (<https://www.girinst.org/repbase/>). Download the FASTA export from your subscription account.

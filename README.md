@@ -11,7 +11,7 @@
 <p align="center">
   <a href="https://doi.org/10.5281/zenodo.21473020"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.21473020.svg" alt="DOI"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a>
-  <img src="https://img.shields.io/badge/version-v1.0.0-blue.svg" alt="Version v1.0.0">
+  <img src="https://img.shields.io/badge/version-v1.0.1-blue.svg" alt="Version v1.0.1">
 </p>
 
 RepLibBuilder (RLB) is a two-step bioinformatics pipeline that rescues, standardizes,
@@ -102,7 +102,7 @@ python RepLibBuilder.py build     -i <step1_combined_raw.fa> -o <out_dir> [optio
 Check the version at any time:
 
 ```bash
-python RepLibBuilder.py --version      # -> RepLibBuilder v1.0.0
+python RepLibBuilder.py --version      # -> RepLibBuilder v1.0.1
 python RepLibBuilder.py evaluate --help
 python RepLibBuilder.py build --help
 ```
@@ -506,7 +506,7 @@ utils/                      # shared helpers
 
 If you use RepLibBuilder in your work, please cite the archived software:
 
-> Xiang, Y. (2026). *Xiang-Yunpeng/RepLibBuilder: RepLibBuilder v1.0.0*. Zenodo. https://doi.org/10.5281/zenodo.21473020
+> Xiang, Y. (2026). *Xiang-Yunpeng/RepLibBuilder: RepLibBuilder v1.0.1*. Zenodo. https://doi.org/10.5281/zenodo.21473020
 
 - **Cite all versions** (always resolves to the latest release): [`10.5281/zenodo.21473020`](https://doi.org/10.5281/zenodo.21473020)
 - **This specific version (v1.0.0)**: [`10.5281/zenodo.21473021`](https://doi.org/10.5281/zenodo.21473021)

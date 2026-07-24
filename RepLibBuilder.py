@@ -9,7 +9,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DEFAULT_MAPPING = os.path.join(BASE_DIR, 'modules', 'rating_module', 'te_mapping_rules.tsv')
 
 # Single source of truth for the software version.
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 
 # Import modules from the new rating_module directory
 from modules.rating_module.repbase_fixer import RepbaseFixer
@@ -28,7 +28,7 @@ def setup_parsers():
     parser = argparse.ArgumentParser(
         description="""
 ==============================================================================
-RepLibBuilder v1.0.0: Automated Construction of Species-Specific Repeat Libraries
+RepLibBuilder v1.0.1: Automated Construction of Species-Specific Repeat Libraries
 ==============================================================================
 Two-Step Workflow:
   Step 1 (evaluate): Extract, standardize, diagnose, and merge public/denovo 

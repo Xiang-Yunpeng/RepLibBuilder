@@ -41,7 +41,7 @@ def generate_html(eval_json_path, merge_json_path, out_html_path):
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>RepLibBuilder v1.0.0 Report</title>
+        <title>RepLibBuilder v1.0.1 Report</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
             tailwind.config = {{
@@ -64,7 +64,7 @@ def generate_html(eval_json_path, merge_json_path, out_html_path):
         <div class="max-w-7xl mx-auto">
             <header class="mb-8 border-b border-gray-200 dark:border-gray-700 pb-6 flex justify-between items-end">
                 <div>
-                    <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white">RepLibBuilder v1.0.0 Evaluation Report</h1>
+                    <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white">RepLibBuilder v1.0.1 Evaluation Report</h1>
                     <p class="text-gray-500 dark:text-gray-400 mt-2 text-lg">Automated diagnostics, standardization, and quality assessment of Repeat Libraries.</p>
                 </div>
                 <button id="themeToggle" class="px-4 py-2 bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 rounded-full font-semibold shadow-sm hover:shadow transition-shadow">

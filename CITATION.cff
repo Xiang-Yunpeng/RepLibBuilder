@@ -25,8 +25,8 @@ identifiers:
     value: 10.5281/zenodo.21473020
     description: Concept DOI (resolves to all versions)
   - type: doi
-    value: 10.5281/zenodo.21473021
-    description: DOI for version 1.0.0
+    value: 10.5281/zenodo.21528701
+    description: DOI for version 1.0.1
 keywords:
   - bioinformatics
   - genomics

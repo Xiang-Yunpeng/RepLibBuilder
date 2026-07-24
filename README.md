@@ -509,7 +509,7 @@ If you use RepLibBuilder in your work, please cite the archived software:
 > Xiang, Y. (2026). *Xiang-Yunpeng/RepLibBuilder: RepLibBuilder v1.0.1*. Zenodo. https://doi.org/10.5281/zenodo.21473020
 
 - **Cite all versions** (always resolves to the latest release): [`10.5281/zenodo.21473020`](https://doi.org/10.5281/zenodo.21473020)
-- **This specific version (v1.0.0)**: [`10.5281/zenodo.21473021`](https://doi.org/10.5281/zenodo.21473021)
+- **This specific version (v1.0.1)**: [`10.5281/zenodo.21528701`](https://doi.org/10.5281/zenodo.21528701)
 
 The accompanying manuscript is in preparation; this section will be updated with the paper citation upon publication.
 

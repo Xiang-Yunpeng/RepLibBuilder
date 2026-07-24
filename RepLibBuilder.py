@@ -52,8 +52,8 @@ Two-Step Workflow:
     
     # Public DBs
     pub_group = parser_eval.add_argument_group('Public Database Inputs')
-    pub_group.add_argument('--repbase', metavar='FILE', help="Path to Repbase file.")
-    pub_group.add_argument('--dfam_db', metavar='FILE', help="Path to Dfam database file (h5).")
+    pub_group.add_argument('--repbase', metavar='FILE', help="Path to a Repbase FASTA export (raw GIRI format).")
+    pub_group.add_argument('--dfam_db', metavar='DIR', help="Path to a Dfam FamDB directory (folder of partition .h5 files; root *.0.h5 required).")
     pub_group.add_argument('--tax_id', metavar='ID', help="NCBI Taxonomy ID (Required if --dfam_db is used).")
 
     # De novo DBs

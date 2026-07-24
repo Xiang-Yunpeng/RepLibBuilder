@@ -153,7 +153,7 @@ cd-hit -h | head -1
 # Step 1: evaluate + standardize + merge everything
 python RepLibBuilder.py evaluate \
   --repbase Repbase.fa \
-  --dfam_db Dfam.h5 --tax_id 7955 \
+  --dfam_db path/to/dfam_famdb_dir --tax_id 7955 \
   --hite HiTE.fa --edta EDTA.fa --rm2 RM2.fa \
   -o ./workspace/step1 \
   -t 8 -db rexdb-metazoa
@@ -184,8 +184,8 @@ python RepLibBuilder.py build \
 
 | Flag | Argument | Default | Description |
 |------|----------|---------|-------------|
-| `--repbase` | `FILE` | – | Path to a Repbase FASTA file. |
-| `--dfam_db` | `FILE` | – | Path to a Dfam database file (`.h5`). |
+| `--repbase` | `FILE` | – | Path to a **raw Repbase FASTA export** (GIRI format; see [Configuring the public databases](#configuring-the-public-databases)). |
+| `--dfam_db` | `DIR` | – | Path to a **Dfam FamDB directory** — the folder holding the partition `*.h5` files (root `*.0.h5` required), **not** a single file. |
 | `--tax_id` | `ID` | – | NCBI Taxonomy ID. **Required whenever `--dfam_db` is used.** |
 
 **De novo prediction inputs**
@@ -418,12 +418,63 @@ clustered library is retained.
 
 ## Input requirements
 
-- **Repbase** — a FASTA export. Repbase is distributed by GIRI under its own license; you must
-  obtain it yourself (it is **not** redistributed with this repository).
-- **Dfam** — a partitioned `.h5` database plus the NCBI `--tax_id` for your species. Dfam is open
-  access.
+- **Repbase** (`--repbase`, optional) — the raw GIRI Repbase **FASTA export**. Not redistributed
+  with this repository; you must obtain and configure it yourself (see
+  [Configuring the public databases](#configuring-the-public-databases)).
+- **Dfam** (`--dfam_db` + `--tax_id`, optional) — a Dfam **FamDB directory** (the folder of
+  partition `.h5` files) plus your species' NCBI Taxonomy ID. Not redistributed; you configure it
+  yourself (see [Configuring the public databases](#configuring-the-public-databases)).
 - **De novo libraries** — the FASTA output of HiTE, EDTA, and/or RepeatModeler2 for your genome.
 - **TEsorter** and **CD-HIT** must be on `PATH` (both are installed by `environment.yml`).
+
+---
+
+## Configuring the public databases
+
+RepLibBuilder merges two public repeat databases — **Repbase** and **Dfam** — with your *de novo*
+predictions. **Neither database is redistributed with this repository; you must obtain and
+configure them yourself.** Both are optional (you may run with *de novo* libraries only), but when
+you pass `--repbase` / `--dfam_db` they must be set up as described here.
+
+### Repbase (`--repbase`)
+
+- **What to provide.** The **raw Repbase FASTA export** — the classic GIRI format with
+  tab-separated headers `Name<TAB>Classification<TAB>Species`, whose classification field uses
+  Repbase's own superfamily vocabulary (`Gypsy`, `Copia`, `hAT`, `Mariner/Tc1`, `EnSpm/CACTA`,
+  `SINE2/tRNA`, …). RepLibBuilder cleans, normalizes, and de-duplicates it.
+- **How to obtain it.** Since **12 April 2019**, Repbase is no longer freely downloadable — it
+  requires a paid academic/individual subscription from GIRI
+  (<https://www.girinst.org/repbase/>). Download the FASTA export from your subscription account.
+  (Copies obtained before 2019 also work — the FASTA format is unchanged; the 2019 change was to
+  access, not to the file format.)
+- **Note.** This raw FASTA is a *different product* from the EMBL-formatted **"Repbase RepeatMasker
+  Edition"** that RepeatMasker itself consumes. RepLibBuilder's `--repbase` expects the **plain
+  FASTA export**, not the RepeatMasker-Edition `.embl` files.
+
+### Dfam (`--dfam_db` + `--tax_id`)
+
+- **What to provide.** `--dfam_db` is a **directory** (not a single file) holding a **Dfam FamDB
+  partition set**. You supply your species' `--tax_id` (NCBI Taxonomy ID) and RepLibBuilder pulls
+  the matching lineage from that database — but the FamDB directory itself must be configured by
+  you.
+- **How to obtain it.** Dfam is open access. Download the FamDB partition files for your clade from
+  the Dfam release area (<https://www.dfam.org/releases/current/families/FamDB/>):
+  - the **root partition `*.0.h5` is mandatory** (it holds the taxonomy);
+  - plus the leaf partition(s) covering your taxa (each Dfam release lists which partition number
+    covers which clade);
+  - `gunzip` the downloaded `*.h5.gz` files and put them **all in one directory** — keep only a
+    single Dfam export per directory.
+- **Point `--dfam_db` at that directory** (e.g. `--dfam_db /path/to/Dfam`) and pass `--tax_id`.
+  RepLibBuilder calls the bundled `famdb` toolkit to extract the curated families for the ancestors
+  and descendants of your taxon, converts them to FASTA, and drops Unknown-class entries.
+- **Compatibility.** The bundled `famdb` reads **FamDB format 2.x** databases — the current
+  partitioned Dfam releases (e.g. Dfam 3.9). A pre-partition monolithic `.h5` (old single-file
+  scheme) is **not** the expected input.
+
+> **Why Dfam is the open default.** Modern RepeatMasker (4.x, FamDB era) ships with Dfam — an
+> openly licensed TE database — as the free alternative to the now-paywalled Repbase.
+> RepLibBuilder likewise treats Dfam as the open database and Repbase as the optional
+> subscription add-on.
 
 ---
 
@@ -445,7 +496,7 @@ utils/                      # shared helpers
 
 If you use RepLibBuilder in your work, please cite the archived software:
 
-> Peng, X. (2026). *Xiang-Yunpeng/RepLibBuilder: RepLibBuilder v1.0.0*. Zenodo. https://doi.org/10.5281/zenodo.21473020
+> Xiang, Y. (2026). *Xiang-Yunpeng/RepLibBuilder: RepLibBuilder v1.0.0*. Zenodo. https://doi.org/10.5281/zenodo.21473020
 
 - **Cite all versions** (always resolves to the latest release): [`10.5281/zenodo.21473020`](https://doi.org/10.5281/zenodo.21473020)
 - **This specific version (v1.0.0)**: [`10.5281/zenodo.21473021`](https://doi.org/10.5281/zenodo.21473021)
@@ -463,4 +514,4 @@ Consortium, released under **CC0 1.0** (public domain) — see [`modules/famdb/N
 
 ---
 
-*Maintained by Xiangyun Peng. Bug reports and feature requests: please open a GitHub issue.*
+*Maintained by Yunpeng Xiang. Bug reports and feature requests: please open a GitHub issue.*

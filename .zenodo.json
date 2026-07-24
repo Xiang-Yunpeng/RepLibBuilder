@@ -1,6 +1,6 @@
 {
   "title": "RepLibBuilder: Automated construction, evaluation, and refinement of species-specific repeat libraries",
-  "description": "RepLibBuilder (RLB) is a two-step pipeline that rescues, standardizes, diagnoses, and condenses transposable element (TE) libraries. It merges public databases (Repbase, Dfam) with de novo predictions (HiTE, EDTA, RepeatModeler2) and applies a dual-engine diagnostic system (TEsorter protein-domain evidence combined with structural heuristics) to produce a high-fidelity, non-redundant library for genome masking and comparative analysis.",
+  "description": "RepLibBuilder (RLB) is a two-step pipeline that rescues, standardizes, diagnoses, and condenses transposable element (TE) libraries. It merges public databases (Repbase, Dfam) with de novo predictions (HiTE, EDTA, RepeatModeler2) and applies a dual-engine diagnostic system (TEsorter protein-domain evidence combined with structural heuristics) to produce a high-fidelity, non-redundant library for genome masking and comparative analysis. Note: RepLibBuilder does not redistribute the public databases. Users must obtain and configure Repbase themselves (Repbase has required a paid GIRI subscription since 2019); and although RepLibBuilder needs only an NCBI taxonomy ID to extract the relevant families from Dfam, the Dfam FamDB database must still be configured by the user.",
   "upload_type": "software",
   "access_right": "open",
   "license": "MIT",

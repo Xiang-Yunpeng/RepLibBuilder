@@ -460,9 +460,11 @@ you pass `--repbase` / `--dfam_db` they must be set up as described here.
   you.
 - **How to obtain it.** Dfam is open access, but you must download a **FamDB format-2.x** release —
   currently **Dfam 3.9** is the newest one RepLibBuilder can read
-  (<https://www.dfam.org/releases/Dfam_3.9/families/FamDB/>). **Do not use the `/releases/current/`
-  alias — it now serves Dfam 4.0, which this version cannot read (see Compatibility below).** From
-  the Dfam 3.9 FamDB area, grab the partition files for your clade:
+  (<https://www.dfam.org/releases/Dfam_3.9/families/FamDB/>). Dfam permanently archives every past
+  release, so Dfam 3.9 stays downloadable even though the site's default download now highlights
+  Dfam 4.0. **Do not use the `/releases/current/` alias — it now serves Dfam 4.0, which this version
+  cannot read (see Compatibility below).** From the Dfam 3.9 FamDB area, grab the partition files
+  for your clade:
   - the **root partition `dfam39_full.0.h5` is mandatory** (it holds the taxonomy);
   - plus the leaf partition(s) `dfam39_full.N.h5` covering your taxa (N = 0..16; each Dfam release
     documents which partition number covers which clade);
